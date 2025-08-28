@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Tutorial Finder - Top 5 Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        
+        .search-section { padding: 40px; border-bottom: 1px solid #e9ecef; }
+        
+        .search-container { position: relative; margin-bottom: 30px; }
+        
+        .search-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover { transform: translateY(-50%) scale(1.05); }
+        .search-button:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .filters {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .filter-select {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .examples {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .example-query {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .example-query:hover {
+            background: #bbdefb;
+            transform: scale(1.05);
+        }
+        
+        .results-section { padding: 40px; }
+        
+        .tutorial-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .tutorial-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .tutorial-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .tutorial-title a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .tutorial-title a:hover { color: #667eea; }
+        
+        .tutorial-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .meta-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .meta-category {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .meta-format {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .preferred-format {
+            background: #ffeb3b;
+            color: #f57f17;
+            font-weight: 700;
+        }
+        
+        .access-button {
+            margin-left: auto;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .access-button:hover { transform: scale(1.05); }
+        
+        .tutorial-description {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .alternative-formats {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .format-link {
+            display: inline-block;
+            margin: 3px;
+            padding: 5px 10px;
+            background: white;
+            color: #667eea;
+            border: 1px solid #667eea;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        
+        .format-link:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .transcript-note {
+            display: block;
+            margin-top: 8px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .relevance-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .relevance-bar {
+            flex: 1;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .relevance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+        }
+        
+        .relevance-score {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+        }
+        
+        .smart-matching {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Research Tutorial Finder</h1>
+            <p>Top 5 Matching Tutorials with Smart Format Selection</p>
+        </div>
+        
+        <div class="search-section">
+            <div id="uploadStatus" style="margin-bottom: 20px;"></div>
+            <div class="search-container">
+                <input type="text" 
+                       id="searchInput" 
+                       class="search-input" 
+                       placeholder="Search for tutorials..."
+                       disabled>
+                <button class="search-button" onclick="searchTutorials()" disabled>Search</button>
+            </div>
+            
+            <div style="text-align: right; margin-bottom: 15px;">
+                <button onclick="loadFromGoogleSheets()" style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 13px; transition: all 0.3s ease;">
+                    🔄 Refresh Data
+                </button>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="find sources">Find sources</option>
+                        <option value="cite sources">Cite sources</option>
+                        <option value="evaluate sources">Evaluate sources</option>
+                        <option value="generative AI">Generative AI</option>
+                        <option value="research basics">Research basics</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="formatFilter">Format Filter:</label>
+                    <select id="formatFilter" class="filter-select">
+                        <option value="all">All Formats (Auto-Select Best)</option>
+                        <option value="Video">Video only</option>
+                        <option value="PDF">PDF only</option>
+                        <option value="PowerPoint">PowerPoint only</option>
+                        <option value="Word document">Word document only</option>
+                        <option value="interactive module">Interactive module only</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="examples">
+                <span style="font-weight: 600; color: #6c757d; margin-right: 10px;">Example searches:</span>
+                <div class="example-query" onclick="useExample(this)">boolean operators</div>
+                <div class="example-query" onclick="useExample(this)">cite sources APA</div>
+                <div class="example-query" onclick="useExample(this)">evaluate articles</div>
+                <div class="example-query" onclick="useExample(this)">find peer reviewed</div>
+            </div>
+        </div>
+        
+        <div class="results-section">
+            <div id="results">
+                <div style="text-align: center; color: #6c757d; padding: 40px;">
+                    <h3>Ready to Search</h3>
+                    <p>Upload your tutorial database CSV file to begin searching.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tutorials = [];
+        
+        // GOOGLE SHEETS CSV URL - Replace with your published sheet URL
+        const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQHR0DqT1yut5Nb-VENVv22mUXkuaPfwbijl7tytd4WSPkMgMLxTkZGNM20uYSLNR9Oc4OQ_rM-uk8K/pub?gid=1600092664&single=true&output=csv';
+        // Example: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ.../pub?output=csv'
+
+        // Stop words for better search processing
+        const stopWords = new Set([
+            'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 
+            'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 
+            'herself', 'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 
+            'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 
+            'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 
+            'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 
+            'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 
+            'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 
+            'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once',
+            'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few',
+            'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same',
+            'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now'
+        ]);
+
+        // Remove manual file upload function since we're only using Google Sheets
+        
+        // Auto-load from Google Sheets
+        function loadFromGoogleSheets() {
+            document.getElementById('uploadStatus').innerHTML = '<div style="background: #d1ecf1; color: #0c5460; padding: 15px; border-radius: 8px;">⏳ Loading tutorials from database...</div>';
+            
+            fetch(GOOGLE_SHEETS_CSV_URL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load tutorial database');
+                    }
+                    return response.text();
+                })
+                .then(csvData => {
+                    Papa.parse(csvData, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            processDataWithTranscriptLinks(results.data);
+                        },
+                        error: function(error) {
+                            console.error('Parse error:', error);
+                            document.getElementById('uploadStatus').innerHTML = '<div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">❌ Error parsing tutorial database. Please try uploading manually.</div>';
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    document.getElementById('uploadStatus').innerHTML = '<div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px;">❌ Could not load tutorial database. Please upload the CSV file manually.</div>';
+                });
+        }
+        
+        // Auto-load on page load if URL is configured
+        window.addEventListener('DOMContentLoaded', function() {
+            if (GOOGLE_SHEETS_CSV_URL && GOOGLE_SHEETS_CSV_URL !== 'YOUR_GOOGLE_SHEETS_PUBLISHED_CSV_URL_HERE') {
+                loadFromGoogleSheets();
+            }
+        });
+
+        function processDataWithTranscriptLinks(data) {
+            // Map categories to consistent format
+            function mapCategory(cat) {
+                const map = {
+                    'Cite Sources': 'cite sources',
+                    'Scholarly / PR Sources': 'find sources',
+                    'Search Tips & Strategies': 'find sources',
+                    'SOS': 'find sources',
+                    'Data & Statistics': 'find sources',
+                    'Evaluate Sources': 'evaluate sources',
+                    'Generative AI': 'generative AI',
+                    'Research Basics': 'research basics'
+                };
+                if (cat && cat.startsWith('Subject-Specific')) return 'find sources';
+                return map[cat] || 'research basics';
+            }
+
+            // Map formats to consistent naming
+            function mapFormat(fmt) {
+                if (!fmt) return 'interactive module';
+                
+                const formatLower = fmt.toLowerCase().trim();
+                
+                const map = {
+                    'panopto': 'Video',
+                    'video': 'Video',
+                    'pdf': 'PDF',
+                    'powerpoint': 'PowerPoint',
+                    'ppt': 'PowerPoint',
+                    'word': 'Word document',
+                    'word document': 'Word document',
+                    'html': 'interactive module',
+                    'h5p': 'interactive module'
+                };
+                
+                // Check the map using lowercase
+                for (const [key, value] of Object.entries(map)) {
+                    if (formatLower.includes(key)) {
+                        return value;
+                    }
+                }
+                
+                return 'interactive module';
+            }
+
+            // Create grouping key for deduplication
+            function createGroupingKey(title) {
+                return title.toLowerCase()
+                    .replace(/[^\w\s]/g, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+
+            // Group tutorials by title to handle multiple formats
+            const contentGroups = new Map();
+            let tutorialsWithTranscripts = 0;
+
+            data.forEach(row => {
+                if (!row['Tutorial title'] || !row.Link) return;
+
+                const groupingKey = createGroupingKey(row['Tutorial title']);
+                const mappedFormat = mapFormat(row.Format);
+                const mappedCategory = mapCategory(row.Category);
+                
+                // Check if this tutorial has a transcript link
+                const hasTranscript = row.transcript_link && row.transcript_link.trim() !== '';
+                if (hasTranscript) {
+                    tutorialsWithTranscripts++;
+                }
+
+                // Create searchable content
+                const searchContent = [
+                    row['Tutorial title'] || '',
+                    row.primary_topic || '',
+                    row.secondary_topics || '',
+                    row.learning_objectives || '',
+                    row.student_questions_addressed || '',
+                    row.search_intent_keywords || '',
+                    row.tools_mentioned || '',
+                    row.when_to_use || ''
+                ].join(' ').toLowerCase();
+
+                const tutorialData = {
+                    title: row['Tutorial title'],
+                    category: mappedCategory,
+                    format: mappedFormat,
+                    originalFormat: row.Format,
+                    link: row.Link,
+                    transcriptLink: row.transcript_link || null,
+                    type: row['Tutorial type'] || '',
+                    primaryTopic: row.primary_topic || '',
+                    secondaryTopics: row.secondary_topics || '',
+                    learningObjectives: row.learning_objectives || '',
+                    difficulty: row.difficulty_level || '',
+                    questionsAddressed: row.student_questions_addressed || '',
+                    keywords: row.search_intent_keywords || '',
+                    tools: row.tools_mentioned || '',
+                    whenToUse: row.when_to_use || '',
+                    searchContent: searchContent
+                };
+
+                if (!contentGroups.has(groupingKey)) {
+                    contentGroups.set(groupingKey, []);
+                }
+                contentGroups.get(groupingKey).push(tutorialData);
+            });
+            
+            console.log(`Found ${tutorialsWithTranscripts} tutorials with transcript links`);
+            console.log(`Unique tutorial groups: ${contentGroups.size}`);
+
+            // Process groups and create final tutorial list with format prioritization
+            tutorials = [];
+            const formatPriority = ['Video', 'PDF', 'PowerPoint', 'Word document', 'interactive module'];
+
+            contentGroups.forEach((formatVariants, groupingKey) => {
+                if (formatVariants.length === 0) return;
+
+                // Select preferred format using priority order
+                let selectedTutorial = null;
+                for (const preferredFormat of formatPriority) {
+                    const match = formatVariants.find(variant => variant.format === preferredFormat);
+                    if (match) {
+                        selectedTutorial = match;
+                        break;
+                    }
+                }
+
+                // Fallback if no priority format found
+                if (!selectedTutorial) {
+                    selectedTutorial = formatVariants[0];
+                }
+
+                // Create base description
+                let description = '';
+                if (selectedTutorial.learningObjectives) {
+                    description = selectedTutorial.learningObjectives;
+                } else if (selectedTutorial.questionsAddressed) {
+                    description = `Addresses: ${selectedTutorial.questionsAddressed}`;
+                } else if (selectedTutorial.whenToUse) {
+                    description = `Use this when: ${selectedTutorial.whenToUse}`;
+                } else if (selectedTutorial.primaryTopic) {
+                    description = `Covers: ${selectedTutorial.primaryTopic}`;
+                }
+
+                // Collect alternative formats (excluding the selected one)
+                const alternativeFormats = formatVariants
+                    .filter(variant => variant.format !== selectedTutorial.format)
+                    .map(variant => ({
+                        format: variant.format,
+                        link: variant.link
+                    }));
+
+                tutorials.push({
+                    id: tutorials.length + 1,
+                    title: selectedTutorial.title,
+                    category: selectedTutorial.category,
+                    format: selectedTutorial.format,
+                    link: selectedTutorial.link,
+                    transcriptLink: selectedTutorial.transcriptLink, // Include transcript link
+                    description: description,
+                    searchContent: selectedTutorial.searchContent,
+                    alternativeFormats: alternativeFormats,
+                    hasAlternatives: alternativeFormats.length > 0,
+                    hasTranscript: selectedTutorial.format === 'Video' && selectedTutorial.transcriptLink,
+                    difficulty: selectedTutorial.difficulty,
+                    tools: selectedTutorial.tools
+                });
+            });
+
+            // Update status
+            const duplicatesRemoved = data.length - tutorials.length;
+            document.getElementById('uploadStatus').innerHTML = `
+                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px;">
+                    ✅ Successfully loaded ${tutorials.length} unique tutorials!<br>
+                    📊 Removed ${duplicatesRemoved} duplicate entries | 
+                    📝 ${tutorialsWithTranscripts} videos have transcripts available
+                </div>
+            `;
+            
+            document.getElementById('searchInput').disabled = false;
+            document.querySelector('.search-button').disabled = false;
+        }
+
+        // Process search query
+        function processQuery(query) {
+            const queryLower = query.toLowerCase();
+            const meaningfulWords = queryLower
+                .split(/\s+/)
+                .filter(word => word.length > 1)
+                .filter(word => !stopWords.has(word));
+
+            return {
+                originalQuery: query,
+                meaningfulWords: meaningfulWords,
+                processedQuery: meaningfulWords.join(' ')
+            };
+        }
+
+        // Calculate relevance score
+        function calculateRelevance(query, tutorial) {
+            const processedQuery = processQuery(query);
+            const meaningfulWords = processedQuery.meaningfulWords;
+            
+            let score = 0;
+            let matches = [];
+
+            // Check each meaningful word
+            meaningfulWords.forEach(word => {
+                // Title match (highest priority)
+                if (tutorial.title.toLowerCase().includes(word)) {
+                    score += 10;
+                    matches.push(`title: "${word}"`);
+                }
+                
+                // Search content match
+                if (tutorial.searchContent.includes(word)) {
+                    score += 3;
+                }
+                
+                // Category match
+                if (tutorial.category.toLowerCase().includes(word)) {
+                    score += 5;
+                    matches.push(`category: "${word}"`);
+                }
+            });
+
+            // Bonus for exact phrase match
+            if (tutorial.searchContent.includes(processedQuery.processedQuery)) {
+                score += 15;
+                matches.push('exact phrase');
+            }
+
+            return {
+                score: score,
+                matches: matches,
+                processedQuery: processedQuery.processedQuery
+            };
+        }
+
+        function searchTutorials() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query || tutorials.length === 0) return;
+
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const formatFilter = document.getElementById('formatFilter').value;
+
+            // Filter and score tutorials
+            let results = tutorials.map(tutorial => {
+                // Apply category filter
+                if (categoryFilter !== 'all' && tutorial.category !== categoryFilter) {
+                    return null;
+                }
+
+                // Apply format filter
+                if (formatFilter !== 'all' && tutorial.format !== formatFilter) {
+                    return null;
+                }
+
+                const relevance = calculateRelevance(query, tutorial);
+                
+                return {
+                    ...tutorial,
+                    relevanceScore: relevance.score,
+                    matches: relevance.matches,
+                    processedQuery: relevance.processedQuery
+                };
+            }).filter(tutorial => tutorial && tutorial.relevanceScore > 0)
+              .sort((a, b) => b.relevanceScore - a.relevanceScore)
+              .slice(0, 5); // LIMIT TO TOP 5 RESULTS
+
+            displayResults(results, query);
+        }
+
+        function displayResults(results, query) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #dc3545;">
+                        <h3>No tutorials found</h3>
+                        <p>Try different keywords or adjust your filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const processedQuery = processQuery(query);
+            
+            const resultsHTML = `
+                <div style="margin-bottom: 25px;">
+                    <h2 style="color: #2c3e50;">Top ${results.length} Results for: "${query}"</h2>
+                    <div style="background: #e3f2fd; border: 1px solid #bbdefb; border-radius: 8px; padding: 10px; margin: 10px 0; font-size: 13px; color: #1976d2;">
+                        <strong>Search processed:</strong> "${processedQuery.processedQuery}" (${processedQuery.meaningfulWords.length} keywords)
+                    </div>
+                </div>
+                
+                ${results.map((tutorial, index) => {
+                    // Build alternative formats display
+                    let alternativeFormatsHTML = '';
+                    
+                    // Check for transcript link (for videos)
+                    let transcriptHTML = '';
+                    if (tutorial.hasTranscript && tutorial.transcriptLink) {
+                        transcriptHTML = `
+                            <div style="margin-top: 10px; padding: 10px; background: #f0f8ff; border-left: 3px solid #1976d2; border-radius: 4px;">
+                                <em style="color: #555;">A <a href="${tutorial.transcriptLink}" target="_blank" style="color: #667eea; font-weight: 600; text-decoration: underline;">descriptive transcript</a> for this video is available.</em>
+                            </div>
+                        `;
+                    }
+                    
+                    // Show alternative formats if available
+                    if (tutorial.hasAlternatives) {
+                        alternativeFormatsHTML = `
+                            <div class="alternative-formats">
+                                <strong>Also available as:</strong>
+                                ${tutorial.alternativeFormats.map(alt => 
+                                    `<a href="${alt.link}" target="_blank" class="format-link">${alt.format}</a>`
+                                ).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    return `
+                        <div class="tutorial-card">
+                            <div class="tutorial-title">
+                                <a href="${tutorial.link}" target="_blank">${tutorial.title}</a>
+                            </div>
+                            <div class="tutorial-meta">
+                                <span class="meta-tag meta-category">${tutorial.category}</span>
+                                <span class="meta-tag meta-format ${tutorial.hasAlternatives ? 'preferred-format' : ''}">${tutorial.format}</span>
+                                ${tutorial.difficulty ? `<span class="meta-tag" style="background: #fff3e0; color: #e65100;">Level: ${tutorial.difficulty}</span>` : ''}
+                                <a href="${tutorial.link}" target="_blank" class="access-button">Access Tutorial</a>
+                            </div>
+                            
+                            <div class="tutorial-description">${tutorial.description}</div>
+                            
+                            ${transcriptHTML}
+                            ${alternativeFormatsHTML}
+                            
+                            ${tutorial.matches && tutorial.matches.length > 0 ? `
+                                <div class="smart-matching">
+                                    <strong>Matched on:</strong> ${tutorial.matches.join(', ')}
+                                </div>
+                            ` : ''}
+                            
+                            <div class="relevance-indicator">
+                                <div class="relevance-bar">
+                                    <div class="relevance-fill" style="width: ${Math.min(tutorial.relevanceScore * 5, 100)}%"></div>
+                                </div>
+                                <div class="relevance-score">Relevance: ${tutorial.relevanceScore} pts</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+            
+            resultsDiv.innerHTML = resultsHTML;
+        }
+
+        function useExample(element) {
+            if (tutorials.length === 0) {
+                alert('Please upload the tutorial database CSV first!');
+                return;
+            }
+            document.getElementById('searchInput').value = element.textContent;
+            searchTutorials();
+        }
+
+        // Enable search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !this.disabled) {
+                searchTutorials();
+            }
+        });
+
+        // Re-run search when filters change
+        ['categoryFilter', 'formatFilter'].forEach(filterId => {
+            document.getElementById(filterId).addEventListener('change', function() {
+                if (tutorials.length > 0 && document.getElementById('searchInput').value.trim()) {
+                    searchTutorials();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
