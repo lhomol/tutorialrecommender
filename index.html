@@ -3369,10 +3369,12 @@
                 .filter(tutorial => tutorial && tutorial.relevanceScore > 0)
                 .sort((a, b) => b.relevanceScore - a.relevanceScore)
                 .slice(0, 5); // TOP 5 RESULTS
-
+if (query) {
+        logSearchToGoogleForm(query, categoryFilter, formatFilter, results.length);
+    }
             displayResults(results, query);
         }
-
+ 
         function displayResults(results, query) {
             const resultsDiv = document.getElementById('results');
             
@@ -3463,6 +3465,30 @@
             document.getElementById('searchInput').value = element.textContent;
             searchTutorials();
         }
+// Google Form Analytics Tracking
+function logSearchToGoogleForm(query, category, format, resultsCount) {
+    // Your specific form configuration
+    const FORM_ID = '1FAIpQLSd8wDip8KCcyWioZUxtQFr3OXw2KKMjdMUAAyRpprA0r6_Omg';
+    const formURL = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+    
+    // Your specific entry IDs from the URL you provided
+    const formData = new FormData();
+    formData.append('entry.1450901702', query || 'empty');           // Search Query
+    formData.append('entry.1796583750', category || 'all');          // Category Filter
+    formData.append('entry.708025292', format || 'all');             // Format Filter
+    formData.append('entry.1349260545', resultsCount.toString());    // Results Count
+    formData.append('entry.1336855019', new Date().toISOString());   // Timestamp
+    
+    // Submit without waiting for response
+    fetch(formURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    }).catch(err => {
+        // This will show an error in console but the data still gets submitted
+        // This is normal behavior when using no-cors mode
+    });
+}
     </script>
 </body>
 </html>
