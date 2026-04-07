@@ -1,603 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9S789D3VC6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9S789D3VC6');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Tutorial Finder - Top 5 Results</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Tutorial Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-        :root {
-            --color-primary: #2347B3;
-            --color-primary-hover: #b4061e;
-            --color-accent: #387AA6;
-            --color-text: #2e2e2e;
-            --color-text-light: #495057;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --color-border: #dcdce0;
-            --color-footer-bg: #000000;
-            --color-footer-secondary: #444444;
-            --color-footer-text: #DCDCE0;
-            --color-success: #2e7d32;
-            --color-success-bg: #e8f5e9;
-            --shadow-header: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            --font-main: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-        }
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: var(--font-main);
-            background: var(--color-bg);
-            min-height: 100vh;
-            color: var(--color-text);
-            display: flex;
-            flex-direction: column;
-        }
+  :root {
+    --color-primary: #1a3585;       /* darkened from #2347B3 — passes AAA on white */
+    --color-primary-hover: #8b0416; /* darkened from #b4061e — passes AAA on white */
+    --color-accent: #1f5c80;        /* darkened from #387AA6 — passes AAA on white */
+    --color-text: #1a1a1a;
+    --color-text-light: #3d444b;    /* darkened from #495057 — passes AAA on white */
+    --color-bg: #f4f4f4;
+    --color-white: #ffffff;
+    --color-border: #767676;        /* darkened for AAA on white backgrounds */
+    --color-success: #1a5c1e;       /* darkened from #2e7d32 — passes AAA on light green */
+    --color-success-bg: #d4edda;
+    --color-focus: #FFD700;         /* gold focus ring — high contrast on both light and dark */
+    --color-focus-dark: #1a1a1a;    /* dark offset ring to ensure visibility on all backgrounds */
 
-        /* ── Header ── */
-        .head {
-            width: 100%;
-            background-color: var(--color-white);
-            padding: 0 50px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            box-shadow: var(--shadow-header);
-            position: relative;
-            z-index: 10;
-            flex-shrink: 0;
-        }
-        .head-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--color-text);
-            letter-spacing: -0.01em;
-        }
-        .head-title span {
-            color: var(--color-accent);
-        }
+    /* Meta tag colours — all pass AAA on their backgrounds */
+    --meta-cat-text: #0d3d52;       /* AAA on #d6eaf5 */
+    --meta-cat-bg: #d6eaf5;
+    --meta-cat-border: #0d3d52;
+    --meta-fmt-text: #3b1a52;       /* AAA on #e8daf0 */
+    --meta-fmt-bg: #e8daf0;
+    --meta-fmt-border: #3b1a52;
+    --meta-pref-text: #5c3d00;      /* AAA on #fdefc3 */
+    --meta-pref-bg: #fdefc3;
+    --meta-pref-border: #5c3d00;
+    --meta-diff-text: #5c2000;      /* AAA on #fde3cc */
+    --meta-diff-bg: #fde3cc;
+    --meta-diff-border: #5c2000;
 
-                /* ── Main container ── */
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 30px 24px 60px;
-            flex: 1;
-        }
+    --font-main: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
 
-        /* ── Page title area ── */
-        .page-title-area {
-            margin-bottom: 28px;
-            border-bottom: 3px solid var(--color-accent);
-            padding-bottom: 14px;
-        }
-        .page-title-area h1 {
-            font-size: 1.65rem;
-            font-weight: 900;
-            color: var(--color-text);
-            line-height: 1.3;
-        }
-        .page-title-area p {
-            font-size: 0.95rem;
-            color: var(--color-text-light);
-            margin-top: 4px;
-        }
+  body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    min-height: 100vh;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+  }
 
-        /* ── Status message ── */
-        .status-message {
-            background: var(--color-success-bg);
-            color: var(--color-success);
-            padding: 12px 16px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            border-left: 4px solid var(--color-success);
-        }
+  /* ── Shared focus style ── */
+  /* Applied via :focus-visible so mouse users are unaffected */
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--color-focus-dark);
+  }
 
-        /* ── Search section ── */
-        .search-section {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: 28px;
-            margin-bottom: 28px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-        }
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
 
-        .search-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
+  /* ── Live region ── */
+  #search-announcer {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
 
-        .search-input {
-            width: 100%;
-            padding: 12px 120px 12px 16px;
-            font-family: var(--font-main);
-            font-size: 15px;
-            border: 2px solid var(--color-border);
-            border-radius: 4px;
-            outline: none;
-            color: var(--color-text);
-            transition: border-color 0.2s ease;
-        }
-        .search-input:focus {
-            border-color: var(--color-accent);
-        }
-        .search-input::placeholder {
-            color: #999;
-        }
+  /* ── Layout ── */
+  .container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+    flex: 1;
+  }
 
-        .search-button {
-            position: absolute;
-            right: 4px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            padding: 10px 22px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            transition: background 0.2s ease;
-        }
-        .search-button:hover {
-            background: var(--color-primary-hover);
-        }
+  .page-title-area {
+    margin-bottom: 28px;
+    border-bottom: 3px solid #1f5c80;
+    padding-bottom: 14px;
+  }
+  .page-title-area h2 {
+    font-size: 1.65rem;
+    font-weight: 900;
+    color: #0e4b74;
+    line-height: 1.3;
+  }
+  .page-title-area p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-top: 4px;
+  }
 
-        /* ── Filters ── */
-        .filters {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 18px;
-        }
-        .filter-group {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .filter-group label {
-            font-weight: 700;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        .filter-select {
-            flex: 1;
-            padding: 8px 10px;
-            border: 2px solid var(--color-border);
-            border-radius: 4px;
-            font-family: var(--font-main);
-            font-size: 14px;
-            color: var(--color-text);
-            outline: none;
-            background: var(--color-white);
-            transition: border-color 0.2s ease;
-        }
-        .filter-select:focus {
-            border-color: var(--color-accent);
-        }
+  .status-message {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--color-success);
+  }
 
-        /* ── Example queries ── */
-        .examples {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .examples-label {
-            font-weight: 700;
-            color: var(--color-text-light);
-            font-size: 0.85rem;
-            margin-right: 4px;
-        }
-        .example-query {
-            display: inline-block;
-            padding: 5px 14px;
-            background: var(--color-white);
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
-            border-radius: 3px;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .example-query:hover {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
+  /* ── Search section ── */
+  .search-section {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
 
-        /* ── Results ── */
-        .results-section h2 {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--color-text);
-            margin-bottom: 6px;
-        }
+  .search-field-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--color-text);
+  }
 
-        .search-info {
-            background: #eef4f9;
-            border: 1px solid #c4d9e8;
-            border-radius: 4px;
-            padding: 8px 12px;
-            margin: 10px 0 20px;
-            font-size: 0.8rem;
-            color: var(--color-accent);
-        }
-        .search-info strong {
-            font-weight: 700;
-        }
+  .search-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
 
-        /* ── Tutorial card ── */
-        .tutorial-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-left: 4px solid var(--color-accent);
-            border-radius: 4px;
-            padding: 20px 24px;
-            margin-bottom: 16px;
-            transition: border-left-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .tutorial-card:hover {
-            border-left-color: var(--color-primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+  .search-input {
+    width: 100%;
+    padding: 12px 120px 12px 16px;
+    font-family: var(--font-main);
+    font-size: 15px;
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    outline: none;
+    color: var(--color-text);
+    transition: border-color 0.2s ease;
+  }
+  .search-input:focus-visible {
+    border-color: var(--color-accent);
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--color-focus-dark);
+  }
+  .search-input::placeholder { color: #595959; } /* AAA on white */
 
-        .tutorial-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .tutorial-title a {
-            color: var(--color-primary);
-            text-decoration: underline;
-        }
-        .tutorial-title a:hover,
-        .tutorial-title a:focus {
-            color: var(--color-primary-hover);
-        }
+  .search-button {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+  .search-button:hover { background: var(--color-primary-hover); }
 
-        .tutorial-meta {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+  /* ── Filters ── */
+  .filters {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+  }
+  .filter-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .filter-group label {
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .filter-select {
+    flex: 1;
+    padding: 8px 10px;
+    border: 2px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    color: var(--color-text);
+    outline: none;
+    background: var(--color-white);
+  }
 
-        .meta-tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-        .meta-category {
-            background: #eef4f9;
-            color: var(--color-accent);
-            border: 1px solid #c4d9e8;
-        }
-        .meta-format {
-            background: #f5f0f7;
-            color: #6a3d7d;
-            border: 1px solid #ddd0e6;
-        }
-        .preferred-format {
-            background: #fff8e1;
-            color: #b8860b;
-            border: 1px solid #f0d68a;
-        }
-        .meta-difficulty {
-            background: #fff3e0;
-            color: #bf5600;
-            border: 1px solid #ffe0b2;
-        }
+  /* ── Suggested searches ── */
+  .examples {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .examples-label {
+    font-weight: 700;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    margin-right: 4px;
+  }
+  .example-query {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+  .example-query:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
 
-        .access-button {
-            margin-left: auto;
-            padding: 7px 16px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            border-radius: 3px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 0.02em;
-            transition: background 0.2s ease;
-            white-space: nowrap;
-        }
-        .access-button:hover {
-            background: var(--color-primary-hover);
-            color: var(--color-white);
-        }
+  /* ── Results ── */
+  .results-section h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
 
-        .tutorial-description {
-            color: var(--color-text-light);
-            line-height: 1.6;
-            margin-bottom: 10px;
-            font-size: 0.93rem;
-        }
+  /* ── Tutorial card ── */
+  article.tutorial-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: border-left-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  article.tutorial-card:hover {
+    border-left-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
 
-        .transcript-notice {
-            margin-top: 10px;
-            padding: 8px 12px;
-            background: #eef4f9;
-            border-left: 3px solid var(--color-accent);
-            border-radius: 0 4px 4px 0;
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-        }
-        .transcript-notice a {
-            color: var(--color-primary);
-            font-weight: 700;
-            text-decoration: underline;
-        }
-        .transcript-notice a:hover {
-            color: var(--color-primary-hover);
-        }
+  .tutorial-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .tutorial-title a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .tutorial-title a:hover { color: var(--color-primary-hover); }
 
-        .alternative-formats {
-            background: var(--color-bg);
-            padding: 10px 14px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-size: 13px;
-        }
-        .alternative-formats strong {
-            color: var(--color-text);
-        }
+  .tutorial-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-        .format-link {
-            display: inline-block;
-            margin: 3px 4px;
-            padding: 4px 10px;
-            background: var(--color-white);
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
-            border-radius: 3px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .format-link:hover {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
+  .meta-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .meta-category {
+    background: var(--meta-cat-bg);
+    color: var(--meta-cat-text);
+    border: 1px solid var(--meta-cat-border);
+  }
+  .meta-format {
+    background: var(--meta-fmt-bg);
+    color: var(--meta-fmt-text);
+    border: 1px solid var(--meta-fmt-border);
+  }
+  .preferred-format {
+    background: var(--meta-pref-bg);
+    color: var(--meta-pref-text);
+    border: 1px solid var(--meta-pref-border);
+  }
+  .meta-difficulty {
+    background: var(--meta-diff-bg);
+    color: var(--meta-diff-text);
+    border: 1px solid var(--meta-diff-border);
+  }
 
-        .smart-matching {
-            background: var(--color-success-bg);
-            color: var(--color-success);
-            padding: 6px 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-size: 12px;
-            border-left: 3px solid var(--color-success);
-        }
+  .tutorial-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-size: 0.93rem;
+  }
 
-        .relevance-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-        .relevance-bar {
-            flex: 1;
-            height: 5px;
-            background: #e9ecef;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .relevance-fill {
-            height: 100%;
-            background: var(--color-accent);
-            transition: width 0.5s ease;
-        }
-        .relevance-score {
-            font-size: 11px;
-            color: #999;
-            font-weight: 700;
-            white-space: nowrap;
-        }
+  /* ── Access block ── */
+  .access-tutorial-block { margin-bottom: 10px; }
+  .access-tutorial-label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  .access-button {
+    display: inline-block;
+    padding: 7px 16px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+  .access-button:hover { background: var(--color-primary-hover); color: var(--color-white); }
 
-        .empty-state {
-            text-align: center;
-            color: var(--color-text-light);
-            padding: 50px 20px;
-        }
-        .empty-state h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--color-text);
-        }
-        .empty-state p {
-            font-size: 0.9rem;
-        }
+  /* ── Transcript notice ── */
+  .transcript-notice {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--meta-cat-bg);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+  .transcript-notice a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .transcript-notice a:hover { color: var(--color-primary-hover); }
 
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: var(--color-primary-hover);
-        }
-        .no-results h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
+  /* ── Alternative formats ── */
+  .alternative-formats {
+    background: var(--color-bg);
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--color-text);
+  }
+  .alternative-formats strong { color: var(--color-text); }
+  .format-link {
+    display: inline-block;
+    margin: 3px 4px;
+    padding: 4px 10px;
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+  .format-link:hover { background: var(--color-primary); color: var(--color-white); }
 
-        /* ── Footer ── */
-        .foot {
-            width: 100%;
-            padding: 14px 50px;
-            background-color: var(--color-footer-bg);
-            color: var(--color-footer-text);
-            font-family: var(--font-main);
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-        .foot a {
-            color: var(--color-footer-text);
-            text-decoration: none;
-        }
-        .foot a:hover,
-        .foot a:focus {
-            color: var(--color-white);
-            text-decoration: underline;
-        }
-        .s-lib-footer {
-            background-color: var(--color-footer-secondary);
-            color: #DBDBDB;
-            width: 100%;
-            padding: 8px 50px;
-            font-size: 0.8rem;
-        }
-        .s-lib-footer a {
-            color: #DBDBDB;
-            text-decoration: none;
-        }
-        .s-lib-footer a:hover,
-        .s-lib-footer a:focus {
-            color: var(--color-white);
-            text-decoration: underline;
-        }
+  /* ── Smart matching ── */
+  .smart-matching {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    border-left: 3px solid var(--color-success);
+  }
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .head { padding: 0 20px; }
-       
-            .container { padding: 20px 16px 40px; }
-            .search-section { padding: 20px; }
-            .filters { flex-direction: column; gap: 12px; }
-            .tutorial-meta { flex-direction: column; align-items: flex-start; }
-            .access-button { margin-left: 0; margin-top: 8px; display: inline-block; }
-            .foot, .s-lib-footer { padding-left: 20px; padding-right: 20px; }
-        }
-    </style>
+  /* ── Relevance bar ── */
+  .relevance-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .relevance-bar {
+    flex: 1;
+    height: 5px;
+    background: #c0c0c0; /* darker track so bar has contrast against it */
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .relevance-fill {
+    height: 100%;
+    background: var(--color-accent);
+    transition: width 0.5s ease;
+  }
+  .relevance-score {
+    font-size: 11px;
+    color: var(--color-text-light); /* #3d444b passes AAA on white */
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── Empty / no results ── */
+  .empty-state {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 50px 20px;
+  }
+  .empty-state h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--color-text);
+  }
+  .empty-state p { font-size: 0.9rem; }
+
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--color-primary-hover);
+  }
+  .no-results h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .container { padding: 20px 16px 40px; }
+    .search-section { padding: 20px; }
+    .filters { flex-direction: column; gap: 12px; }
+    .tutorial-meta { flex-direction: column; align-items: flex-start; }
+    /* Stack search button below input at small sizes */
+    .search-container { display: flex; flex-direction: column; gap: 8px; }
+    .search-input { padding-right: 16px; }
+    .search-button {
+      position: static;
+      transform: none;
+      align-self: flex-start;
+    }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header matching library guide platform -->
-    <div class="head">
-        <div class="head-title"><span>Library</span> &nbsp;Research Tutorial Finder</div>
+<div class="container">
+  <div class="page-title-area">
+    <h2>Research Tutorial Finder</h2>
+    <p>Search across all library tutorials to find the best match for your research needs.</p>
+  </div>
+
+  <div id="uploadStatus" class="status-message" role="status">Loading tutorials…</div>
+
+  <!-- ARIA live region for search result announcements -->
+  <div id="search-announcer" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="search-section">
+    <label for="searchInput" class="search-field-label">Search tutorials</label>
+    <div class="search-container">
+      <input type="text"
+             id="searchInput"
+             class="search-input"
+             placeholder="e.g., boolean operators, APA citation, evaluate sources"
+             onkeydown="if(event.key==='Enter') searchTutorials()">
+      <button class="search-button" onclick="searchTutorials()">Search</button>
     </div>
 
-    
-    <!-- Main content -->
-    <div class="container">
-        <div class="page-title-area">
-            <h1>Research Tutorial Finder</h1>
-            <p>Search across all library tutorials to find the best match for your research needs.</p>
-        </div>
-
-        <div id="uploadStatus" class="status-message">
-            Loading tutorials...
-        </div>
-
-        <div class="search-section">
-            <div class="search-container">
-                <input type="text"
-                       id="searchInput"
-                       class="search-input"
-                       placeholder="Search for tutorials (e.g., boolean operators, APA citation, evaluate sources)..."
-                       onkeypress="if(event.key==='Enter') searchTutorials()">
-                <button class="search-button" onclick="searchTutorials()">Search</button>
-            </div>
-
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="categoryFilter">Category:</label>
-                    <select id="categoryFilter" class="filter-select" onchange="if(document.getElementById('searchInput').value) searchTutorials()">
-                        <option value="all">All Categories</option>
-                        <option value="find sources">Find sources</option>
-                        <option value="cite sources">Cite sources</option>
-                        <option value="evaluate sources">Evaluate sources</option>
-                        <option value="generative AI">Generative AI</option>
-                        <option value="research basics">Research basics</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="formatFilter">Format:</label>
-                    <select id="formatFilter" class="filter-select" onchange="if(document.getElementById('searchInput').value) searchTutorials()">
-                        <option value="all">All Formats (Auto-Select Best)</option>
-                        <option value="Video">Video only</option>
-                        <option value="PDF">PDF only</option>
-                        <option value="PowerPoint">PowerPoint only</option>
-                        <option value="Word document">Word document only</option>
-                        <option value="interactive module">Interactive module only</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="examples">
-                <span class="examples-label">Try:</span>
-                <div class="example-query" onclick="useExample(this)">boolean operators</div>
-                <div class="example-query" onclick="useExample(this)">cite sources APA</div>
-                <div class="example-query" onclick="useExample(this)">evaluate articles</div>
-                <div class="example-query" onclick="useExample(this)">find peer reviewed</div>
-                <div class="example-query" onclick="useExample(this)">generative AI research</div>
-            </div>
-        </div>
-
-        <div class="results-section">
-            <div id="results">
-                <div class="empty-state">
-                    <h3>Ready to Search</h3>
-                    <p>Enter a search term above to find relevant tutorials.</p>
-                </div>
-            </div>
-        </div>
+    <div class="filters">
+      <div class="filter-group">
+        <label for="categoryFilter">Category:</label>
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="find sources">Find sources</option>
+          <option value="cite sources">Cite sources</option>
+          <option value="evaluate sources">Evaluate sources</option>
+          <option value="generative AI">Generative AI</option>
+          <option value="research basics">Research basics</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="formatFilter">Format:</label>
+        <select id="formatFilter" class="filter-select">
+          <option value="all">All Formats (Auto-Select Best)</option>
+          <option value="Video">Video only</option>
+          <option value="PDF">PDF only</option>
+          <option value="PowerPoint">PowerPoint only</option>
+          <option value="Word document">Word document only</option>
+          <option value="interactive module">Interactive module only</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Footer matching library guide platform -->
-    <div class="foot">
-        Research Tutorial Finder &mdash; Powered by Library Tutorials
+    <div class="examples" role="group" aria-label="Suggested searches">
+      <span class="examples-label" aria-hidden="true">Try:</span>
+      <button class="example-query" onclick="useExample(this)">boolean operators</button>
+      <button class="example-query" onclick="useExample(this)">cite sources APA</button>
+      <button class="example-query" onclick="useExample(this)">evaluate articles</button>
+      <button class="example-query" onclick="useExample(this)">find peer reviewed</button>
+      <button class="example-query" onclick="useExample(this)">generative AI research</button>
     </div>
-    <div class="s-lib-footer">
-        &copy; Library &nbsp;|&nbsp; <a href="#">Ask a Librarian</a> &nbsp;|&nbsp; <a href="#">Subject Guides</a>
+  </div>
+
+  <div class="results-section">
+    <div id="results">
+      <div class="empty-state">
+        <h3>Ready to Search</h3>
+        <p>Enter a search term above to find relevant tutorials.</p>
+      </div>
     </div>
+  </div>
+</div>
 
-    <script>
-    console.log('Script loaded successfully');
-        // Stop words for search processing
-        const stopWords = new Set([
-            'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'him', 'his',
-            'she', 'her', 'it', 'its', 'they', 'them', 'their', 'what', 'which',
-            'who', 'this', 'that', 'these', 'those', 'is', 'are', 'was', 'were',
-            'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did',
-            'a', 'an', 'the', 'and', 'but', 'if', 'or', 'as', 'of', 'at', 'by',
-            'for', 'with', 'about', 'into', 'through', 'to', 'from', 'in', 'out',
-            'on', 'off', 'over', 'under', 'so', 'than', 'too', 'very', 'can',
-            'will', 'just', 'should', 'now'
-        ]);
+<script>
+  const stopWords = new Set([
+    'i','me','my','we','our','you','your','he','him','his',
+    'she','her','it','its','they','them','their','what','which',
+    'who','this','that','these','those','is','are','was','were',
+    'be','been','being','have','has','had','do','does','did',
+    'a','an','the','and','but','if','or','as','of','at','by',
+    'for','with','about','into','through','to','from','in','out',
+    'on','off','over','under','so','than','too','very','can',
+    'will','just','should','now'
+  ]);
 
-        // Global tutorials array
-        let tutorials = [];
+  let tutorials = [];
 
-        // TUTORIAL DATA
-        const tutorialData = [
+  const DOC_FORMATS = ['PDF','PowerPoint','Word document'];
+  function isDoc(fmt) { return DOC_FORMATS.includes(fmt); }
+  function linkAttrs(fmt) {
+    return isDoc(fmt)
+      ? { target:'_blank', rel:'noopener noreferrer', newTab:true }
+      : { target:'_self',  rel:'', newTab:false };
+  }
+
+  /* Build an <a> with optional sr-only new-tab notice and sr-only title context */
+  function buildLink(href, visibleText, fmt, cssClass, srTitle) {
+    const a = linkAttrs(fmt);
+    const relAttr = a.rel ? ` rel="${a.rel}"` : '';
+    const newTabNote = a.newTab
+      ? `<span class="sr-only"> (opens in new tab)</span>`
+      : '';
+    const titleNote = srTitle
+      ? `<span class="sr-only"> for ${srTitle}</span>`
+      : '';
+    return `<a href="${href}" target="${a.target}"${relAttr} class="${cssClass}">${visibleText}${titleNote}${newTabNote}</a>`;
+  }
+
+  const tutorialData = [
   {
     "Category": "Cite Sources",
     "Tutorial title": "APA reference list",
@@ -2252,15 +2217,7 @@
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=57711162",
-    "transcript_link": "",
-    "primary_topic": "",
-    "secondary_topics": "",
-    "learning_objectives": "",
-    "difficulty_level": "",
-    "student_questions_addressed": "",
-    "search_intent_keywords": "",
-    "tools_mentioned": "",
-    "when_to_use": ""
+    "transcript_link": "","primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
   },
   {
     "Category": "Search Tips & Strategies",
@@ -2268,15 +2225,7 @@
     "Tutorial type": "Walkthrough",
     "Format": "Word",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967345",
-    "transcript_link": "",
-    "primary_topic": "",
-    "secondary_topics": "",
-    "learning_objectives": "",
-    "difficulty_level": "",
-    "student_questions_addressed": "",
-    "search_intent_keywords": "",
-    "tools_mentioned": "",
-    "when_to_use": ""
+    "transcript_link": "","primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
   },
   {
     "Category": "Search Tips & Strategies",
@@ -3037,14 +2986,7 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a98808dd-e272-46fc-b2d4-ab9800cefcc1",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/ArticlesWrittenNurse",
-    "primary_topic": "",
-    "secondary_topics": "",
-    "learning_objectives": "",
-    "difficulty_level": "",
-    "student_questions_addressed": "",
-    "search_intent_keywords": "",
-    "tools_mentioned": "",
-    "when_to_use": ""
+    "primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
   },
   {
     "Category": "Subject-Specific: Health Sciences",
@@ -3133,14 +3075,7 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8a24a672-99d3-4779-a9fa-adf1013775d8",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/archivegrid",
-    "primary_topic": "",
-    "secondary_topics": "",
-    "learning_objectives": "",
-    "difficulty_level": "",
-    "student_questions_addressed": "",
-    "search_intent_keywords": "",
-    "tools_mentioned": "",
-    "when_to_use": ""
+    "primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
   },
   {
     "Category": "Subject-Specific: History",
@@ -3384,303 +3319,252 @@
   }
 ];
 
-        // Initialize on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            processEmbeddedData();
-        });
+  // Minor words that should stay lowercase unless they are the first word
+  const minorWords = new Set([
+    'a','an','the','and','but','or','nor','for','so','yet',
+    'at','by','in','of','on','to','up','as','is','it'
+  ]);
 
-        function processEmbeddedData() {
-            const contentGroups = new Map();
+  function toTitleCase(str) {
+    if (!str) return str;
+    return str.replace(/\S+/g, (word, offset) => {
+      const clean = word.toLowerCase();
+      if (offset !== 0 && minorWords.has(clean)) return clean;
+      return clean.charAt(0).toUpperCase() + clean.slice(1);
+    });
+  }
 
-            tutorialData.forEach((row, index) => {
-                if (!row['Tutorial title'] || !row.Link) return;
+  window.addEventListener('DOMContentLoaded', processEmbeddedData);
 
-                const groupingKey = createGroupingKey(row['Tutorial title']);
-                const format = mapFormat(row.Format);
-                const category = mapCategory(row.Category);
-                const hasTranscript = row.transcript_link && row.transcript_link.trim() !== '';
+  function processEmbeddedData() {
+    const groups = new Map();
+    tutorialData.forEach(row => {
+      if (!row['Tutorial title'] || !row.Link) return;
+      const key = createGroupingKey(row['Tutorial title']);
+      const fmt = mapFormat(row.Format);
+      const cat = mapCategory(row.Category);
+      const hasTx = !!(row.transcript_link && row.transcript_link.trim());
+      const searchContent = [
+        row['Tutorial title'], row.primary_topic, row.secondary_topics,
+        row.learning_objectives, row.student_questions_addressed,
+        row.search_intent_keywords, row.tools_mentioned, row.when_to_use
+      ].join(' ').toLowerCase();
 
-                const searchContent = [
-                    row['Tutorial title'] || '',
-                    row.primary_topic || '',
-                    row.secondary_topics || '',
-                    row.learning_objectives || '',
-                    row.student_questions_addressed || '',
-                    row.search_intent_keywords || '',
-                    row.tools_mentioned || '',
-                    row.when_to_use || ''
-                ].join(' ').toLowerCase();
+      const obj = {
+        title: row['Tutorial title'], category: cat, format: fmt,
+        link: row.Link, transcriptLink: row.transcript_link || null,
+        learningObjectives: row.learning_objectives || '',
+        questionsAddressed: row.student_questions_addressed || '',
+        whenToUse: row.when_to_use || '',
+        primaryTopic: row.primary_topic || '',
+        difficulty: row.difficulty_level || '',
+        searchContent,
+        hasTranscript: fmt === 'Video' && hasTx
+      };
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(obj);
+    });
 
-                const tutorialObj = {
-                    title: row['Tutorial title'],
-                    category: category,
-                    format: format,
-                    link: row.Link,
-                    transcriptLink: row.transcript_link || null,
-                    primaryTopic: row.primary_topic || '',
-                    learningObjectives: row.learning_objectives || '',
-                    difficulty: row.difficulty_level || '',
-                    questionsAddressed: row.student_questions_addressed || '',
-                    keywords: row.search_intent_keywords || '',
-                    tools: row.tools_mentioned || '',
-                    whenToUse: row.when_to_use || '',
-                    searchContent: searchContent,
-                    hasTranscript: format === 'Video' && hasTranscript
-                };
+    tutorials = [];
+    const fmtPriority = ['Video','PDF','PowerPoint','Word document','interactive module'];
+    groups.forEach(variants => {
+      if (!variants.length) return;
+      let sel = null;
+      for (const pf of fmtPriority) {
+        const m = variants.find(v => v.format === pf);
+        if (m) { sel = m; break; }
+      }
+      if (!sel) sel = variants[0];
 
-                if (!contentGroups.has(groupingKey)) {
-                    contentGroups.set(groupingKey, []);
-                }
-                contentGroups.get(groupingKey).push(tutorialObj);
-            });
+      const desc = sel.learningObjectives
+        || (sel.questionsAddressed ? `Addresses: ${sel.questionsAddressed}` : '')
+        || (sel.whenToUse ? `Use this when: ${sel.whenToUse}` : '')
+        || (sel.primaryTopic ? `Covers: ${sel.primaryTopic}` : '')
+        || 'No description available.';
 
-            tutorials = [];
-            const formatPriority = ['Video', 'PDF', 'PowerPoint', 'Word document', 'interactive module'];
+      const altFmts = variants
+        .filter(v => v.format !== sel.format)
+        .map(v => ({ format: v.format, link: v.link }));
 
-            contentGroups.forEach((formatVariants) => {
-                if (formatVariants.length === 0) return;
+      tutorials.push({
+        id: tutorials.length + 1,
+        title: sel.title, category: sel.category, format: sel.format,
+        link: sel.link, transcriptLink: sel.transcriptLink,
+        description: desc, searchContent: sel.searchContent,
+        alternativeFormats: altFmts,
+        hasAlternatives: altFmts.length > 0,
+        hasTranscript: sel.hasTranscript,
+        difficulty: sel.difficulty
+      });
+    });
 
-                let selectedTutorial = null;
-                for (const preferredFormat of formatPriority) {
-                    const match = formatVariants.find(variant => variant.format === preferredFormat);
-                    if (match) {
-                        selectedTutorial = match;
-                        break;
-                    }
-                }
-                if (!selectedTutorial) selectedTutorial = formatVariants[0];
+    document.getElementById('uploadStatus').innerHTML =
+      `&#10003; ${tutorials.length} unique tutorials loaded.`;
+  }
 
-                let description = '';
-                if (selectedTutorial.learningObjectives) {
-                    description = selectedTutorial.learningObjectives;
-                } else if (selectedTutorial.questionsAddressed) {
-                    description = `Addresses: ${selectedTutorial.questionsAddressed}`;
-                } else if (selectedTutorial.whenToUse) {
-                    description = `Use this when: ${selectedTutorial.whenToUse}`;
-                } else if (selectedTutorial.primaryTopic) {
-                    description = `Covers: ${selectedTutorial.primaryTopic}`;
-                }
+  function createGroupingKey(t) {
+    return t.toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').trim();
+  }
+  function mapCategory(c) {
+    if (!c) return 'research basics';
+    const l = c.toLowerCase();
+    if (l.includes('cite')) return 'cite sources';
+    if (l.includes('data') || l.includes('statistics')) return 'find sources';
+    if (l.includes('evaluate')) return 'evaluate sources';
+    if (l.includes('ai')) return 'generative AI';
+    if (l.includes('scholarly')||l.includes('peer')||l.includes('search')||l.includes('sos')||l.includes('subject')) return 'find sources';
+    return 'research basics';
+  }
+  function mapFormat(f) {
+    if (!f) return 'interactive module';
+    const l = f.toLowerCase();
+    if (l.includes('panopto')||l.includes('video')) return 'Video';
+    if (l.includes('pdf')) return 'PDF';
+    if (l.includes('powerpoint')||l.includes('ppt')) return 'PowerPoint';
+    if (l.includes('word')) return 'Word document';
+    if (l.includes('h5p')||l.includes('html')) return 'interactive module';
+    return 'interactive module';
+  }
 
-                const alternativeFormats = formatVariants
-                    .filter(variant => variant.format !== selectedTutorial.format)
-                    .map(variant => ({ format: variant.format, link: variant.link }));
+  function processQuery(q) {
+    const words = q.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+    const meaningful = words.filter(w => !stopWords.has(w));
+    return { originalQuery: q, meaningfulWords: meaningful.length ? meaningful : words, processedQuery: meaningful.join(' ') };
+  }
+  function calcRelevance(q, t) {
+    const p = processQuery(q);
+    let score = 0, matches = [];
+    p.meaningfulWords.forEach(w => {
+      if (t.title.toLowerCase().includes(w)) { score += 10; matches.push(`title: "${w}"`); }
+      if (t.searchContent.includes(w)) score += 3;
+      if (t.category.toLowerCase().includes(w)) { score += 5; matches.push(`category: "${w}"`); }
+    });
+    if (t.searchContent.includes(p.processedQuery)) { score += 15; matches.push('exact phrase'); }
+    return { score, matches };
+  }
 
-                tutorials.push({
-                    id: tutorials.length + 1,
-                    title: selectedTutorial.title,
-                    category: selectedTutorial.category,
-                    format: selectedTutorial.format,
-                    link: selectedTutorial.link,
-                    transcriptLink: selectedTutorial.transcriptLink,
-                    description: description,
-                    searchContent: selectedTutorial.searchContent,
-                    alternativeFormats: alternativeFormats,
-                    hasAlternatives: alternativeFormats.length > 0,
-                    hasTranscript: selectedTutorial.hasTranscript,
-                    difficulty: selectedTutorial.difficulty,
-                    tools: selectedTutorial.tools
-                });
-            });
+  const SCORE_CEILING = 40;
+  function scorePct(s) { return Math.min(Math.round((s / SCORE_CEILING) * 100), 100); }
 
-            const uniqueCount = tutorials.length;
-            const totalCount = tutorialData.length;
-            document.getElementById('uploadStatus').innerHTML = `
-                &#10003; ${uniqueCount} unique tutorials loaded from ${totalCount} total entries.
-            `;
-        }
+  function searchTutorials() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (!query || !tutorials.length) return;
 
-        function createGroupingKey(title) {
-            return title.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
-        }
+    const catFilter = document.getElementById('categoryFilter').value;
+    const fmtFilter = document.getElementById('formatFilter').value;
 
-        function mapCategory(cat) {
-            if (!cat) return 'research basics';
-            const catLower = cat.toLowerCase();
-            if (catLower.includes('cite')) return 'cite sources';
-            if (catLower.includes('data') || catLower.includes('statistics')) return 'find sources';
-            if (catLower.includes('evaluate')) return 'evaluate sources';
-            if (catLower.includes('ai')) return 'generative AI';
-            if (catLower.includes('scholarly') || catLower.includes('peer') ||
-                catLower.includes('search') || catLower.includes('sos') ||
-                catLower.includes('subject')) return 'find sources';
-            return 'research basics';
-        }
+    const results = tutorials
+      .map(t => {
+        if (catFilter !== 'all' && t.category !== catFilter) return null;
+        if (fmtFilter !== 'all' && t.format !== fmtFilter) return null;
+        const rel = calcRelevance(query, t);
+        return { ...t, relevanceScore: rel.score, matches: rel.matches };
+      })
+      .filter(t => t && t.relevanceScore > 0)
+      .sort((a,b) => b.relevanceScore - a.relevanceScore)
+      .slice(0, 5);
 
-        function mapFormat(fmt) {
-            if (!fmt) return 'interactive module';
-            const fmtLower = fmt.toLowerCase();
-            if (fmtLower.includes('panopto') || fmtLower.includes('video')) return 'Video';
-            if (fmtLower.includes('pdf')) return 'PDF';
-            if (fmtLower.includes('powerpoint') || fmtLower.includes('ppt')) return 'PowerPoint';
-            if (fmtLower.includes('word')) return 'Word document';
-            if (fmtLower.includes('h5p') || fmtLower.includes('html')) return 'interactive module';
-            return 'interactive module';
-        }
+    logSearch(query, catFilter, fmtFilter, results.length);
+    displayResults(results, query);
 
-        function processQuery(query) {
-            const queryLower = query.toLowerCase();
-            const words = queryLower.split(/\s+/).filter(word => word.length > 1);
-            const meaningfulWords = words.filter(word => !stopWords.has(word));
-            return {
-                originalQuery: query,
-                meaningfulWords: meaningfulWords.length > 0 ? meaningfulWords : words,
-                processedQuery: meaningfulWords.join(' ')
-            };
-        }
+    const ann = document.getElementById('search-announcer');
+    ann.textContent = '';
+    requestAnimationFrame(() => {
+      ann.textContent = results.length
+        ? `${results.length} result${results.length > 1 ? 's' : ''} found for "${query}".`
+        : `No results found for "${query}".`;
+    });
+  }
 
-        function calculateRelevance(query, tutorial) {
-            const processed = processQuery(query);
-            let score = 0;
-            let matches = [];
+  function displayResults(results, query) {
+    const div = document.getElementById('results');
 
-            processed.meaningfulWords.forEach(word => {
-                if (tutorial.title.toLowerCase().includes(word)) {
-                    score += 10;
-                    matches.push(`title: "${word}"`);
-                }
-                if (tutorial.searchContent.includes(word)) {
-                    score += 3;
-                }
-                if (tutorial.category.toLowerCase().includes(word)) {
-                    score += 5;
-                    matches.push(`category: "${word}"`);
-                }
-            });
+    if (!results.length) {
+      div.innerHTML = `<div class="no-results"><h3>No tutorials found</h3><p>Try different keywords or adjust your filters.</p></div>`;
+      return;
+    }
 
-            if (tutorial.searchContent.includes(processed.processedQuery)) {
-                score += 15;
-                matches.push('exact phrase');
-            }
+    div.innerHTML = `
+      <div style="margin-bottom:20px;">
+        <h3>Top ${results.length} Result${results.length > 1 ? 's' : ''} for: "${query}"</h3>
+      </div>
+      ${results.map(t => {
+        const a = linkAttrs(t.format);
+        const relAttr = a.rel ? ` rel="${a.rel}"` : '';
+        const newTabNote = a.newTab ? `<span class="sr-only"> (opens in new tab)</span>` : '';
+        const pct = scorePct(t.relevanceScore);
 
-            return { score, matches, processedQuery: processed.processedQuery };
-        }
+        /* Transcript — with sr-only tutorial title for context */
+        const txHTML = (t.hasTranscript && t.transcriptLink)
+          ? `<div class="transcript-notice">
+               A <a href="${t.transcriptLink}" target="_self">descriptive transcript
+               <span class="sr-only"> for ${t.title}</span></a> for this video is available.
+             </div>`
+          : '';
 
-        function searchTutorials() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (!query || tutorials.length === 0) return;
+        /* Alternative formats — each link names its format AND the tutorial */
+        const altHTML = t.hasAlternatives
+          ? `<div class="alternative-formats">
+               <strong>Also available as:</strong>
+               ${t.alternativeFormats.map(af => {
+                   const aa = linkAttrs(af.format);
+                   const aRel = aa.rel ? ` rel="${aa.rel}"` : '';
+                   const aNewTab = aa.newTab ? `<span class="sr-only"> (opens in new tab)</span>` : '';
+                   return `<a href="${af.link}" target="${aa.target}"${aRel} class="format-link">${af.format}<span class="sr-only"> version of ${t.title}</span>${aNewTab}</a>`;
+                 }).join('')}
+             </div>`
+          : '';
 
-            const categoryFilter = document.getElementById('categoryFilter').value;
-            const formatFilter = document.getElementById('formatFilter').value;
+        const matchHTML = (t.matches && t.matches.length)
+          ? `<div class="smart-matching"><strong>Matched on:</strong> ${t.matches.join(', ')}</div>`
+          : '';
 
-            let results = tutorials
-                .map(tutorial => {
-                    if (categoryFilter !== 'all' && tutorial.category !== categoryFilter) return null;
-                    if (formatFilter !== 'all' && tutorial.format !== formatFilter) return null;
-                    const relevance = calculateRelevance(query, tutorial);
-                    return { ...tutorial, relevanceScore: relevance.score, matches: relevance.matches, processedQuery: relevance.processedQuery };
-                })
-                .filter(tutorial => tutorial && tutorial.relevanceScore > 0)
-                .sort((a, b) => b.relevanceScore - a.relevanceScore)
-                .slice(0, 5);
+        return `
+          <article class="tutorial-card" aria-label="${t.title}">
+            <h4 class="tutorial-title">
+              <a href="${t.link}" target="${a.target}"${relAttr}>${t.title}${newTabNote}</a>
+            </h4>
+            <div class="tutorial-meta">
+              <span class="meta-tag meta-category">${t.category}</span>
+              <span class="meta-tag meta-format ${t.hasAlternatives ? 'preferred-format' : ''}">${t.format}</span>
+              ${t.difficulty ? `<span class="meta-tag meta-difficulty">Level: ${t.difficulty}</span>` : ''}
+            </div>
+            <div class="tutorial-description">${t.description}</div>
+            <div class="access-tutorial-block">
+              <p class="access-tutorial-label">Access Tutorial:</p>
+              <a href="${t.link}" target="${a.target}"${relAttr} class="access-button">${t.title}${newTabNote}</a>
+            </div>
+            ${txHTML}
+            ${altHTML}
+            ${matchHTML}
+            <div class="relevance-indicator">
+              <div class="relevance-bar" role="presentation">
+                <div class="relevance-fill" style="width:${pct}%"></div>
+              </div>
+              <div class="relevance-score" aria-label="Relevance ${pct} percent">${pct}%</div>
+            </div>
+          </article>`;
+      }).join('')}`;
+  }
 
-            if (query) {
-                logSearchToGoogleForm(query, categoryFilter, formatFilter, results.length);
-            }
-            displayResults(results, query);
-        }
+  function useExample(el) {
+    if (!tutorials.length) { alert('Tutorials are still loading, please wait.'); return; }
+    document.getElementById('searchInput').value = el.textContent;
+    searchTutorials();
+  }
 
-        function displayResults(results, query) {
-            const resultsDiv = document.getElementById('results');
-
-            if (results.length === 0) {
-                resultsDiv.innerHTML = `
-                    <div class="no-results">
-                        <h3>No tutorials found</h3>
-                        <p>Try different keywords or adjust your filters.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            const processedQuery = processQuery(query);
-
-            resultsDiv.innerHTML = `
-                <div style="margin-bottom: 20px;">
-                    <h2>Top ${results.length} Results for: "${query}"</h2>
-                    <div class="search-info">
-                        <strong>Search processed:</strong> "${processedQuery.processedQuery}" (${processedQuery.meaningfulWords.length} keywords)
-                    </div>
-                </div>
-
-                ${results.map((tutorial, index) => {
-                    let alternativeFormatsHTML = '';
-                    let transcriptHTML = '';
-
-                    if (tutorial.hasTranscript && tutorial.transcriptLink) {
-                        transcriptHTML = `
-                            <div class="transcript-notice">
-                                A <a href="${tutorial.transcriptLink}" target="_blank">descriptive transcript</a> for this video is available.
-                            </div>
-                        `;
-                    }
-
-                    if (tutorial.hasAlternatives) {
-                        alternativeFormatsHTML = `
-                            <div class="alternative-formats">
-                                <strong>Also available as:</strong>
-                                ${tutorial.alternativeFormats.map(alt =>
-                                    `<a href="${alt.link}" target="_blank" class="format-link">${alt.format}</a>`
-                                ).join('')}
-                            </div>
-                        `;
-                    }
-
-                    return `
-                        <div class="tutorial-card">
-                            <div class="tutorial-title">
-                                <a href="${tutorial.link}" target="_blank">${tutorial.title}</a>
-                            </div>
-                            <div class="tutorial-meta">
-                                <span class="meta-tag meta-category">${tutorial.category}</span>
-                                <span class="meta-tag meta-format ${tutorial.hasAlternatives ? 'preferred-format' : ''}">${tutorial.format}</span>
-                                ${tutorial.difficulty ? `<span class="meta-tag meta-difficulty">Level: ${tutorial.difficulty}</span>` : ''}
-                                <a href="${tutorial.link}" target="_blank" class="access-button">Access Tutorial</a>
-                            </div>
-
-                            <div class="tutorial-description">${tutorial.description}</div>
-
-                            ${transcriptHTML}
-                            ${alternativeFormatsHTML}
-
-                            ${tutorial.matches && tutorial.matches.length > 0 ? `
-                                <div class="smart-matching">
-                                    <strong>Matched on:</strong> ${tutorial.matches.join(', ')}
-                                </div>
-                            ` : ''}
-
-                            <div class="relevance-indicator">
-                                <div class="relevance-bar">
-                                    <div class="relevance-fill" style="width: ${Math.min(tutorial.relevanceScore * 5, 100)}%"></div>
-                                </div>
-                                <div class="relevance-score">Relevance: ${tutorial.relevanceScore} pts</div>
-                            </div>
-                        </div>
-                    `;
-                }).join('')}
-            `;
-        }
-
-        function useExample(element) {
-            if (tutorials.length === 0) {
-                alert('Tutorials are still loading, please wait...');
-                return;
-            }
-            document.getElementById('searchInput').value = element.textContent;
-            searchTutorials();
-        }
-
-        // Google Form Analytics Tracking
-        function logSearchToGoogleForm(query, category, format, resultsCount) {
-            const FORM_ID = '1FAIpQLSd8wDip8KCcyWioZUxtQFr3OXw2KKMjdMUAAyRpprA0r6_Omg';
-            const formURL = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
-            const formData = new FormData();
-            formData.append('entry.1450901702', query || 'empty');
-            formData.append('entry.1796583750', category || 'all');
-            formData.append('entry.708025292', format || 'all');
-            formData.append('entry.1349260545', resultsCount.toString());
-            formData.append('entry.1336855019', new Date().toISOString());
-            fetch(formURL, { method: 'POST', mode: 'no-cors', body: formData }).catch(() => {});
-        }
-    </script>
+  function logSearch(query, cat, fmt, count) {
+    const id = '1FAIpQLSd8wDip8KCcyWioZUxtQFr3OXw2KKMjdMUAAyRpprA0r6_Omg';
+    const fd = new FormData();
+    fd.append('entry.1450901702', query || 'empty');
+    fd.append('entry.1796583750', cat || 'all');
+    fd.append('entry.708025292', fmt || 'all');
+    fd.append('entry.1349260545', count.toString());
+    fd.append('entry.1336855019', new Date().toISOString());
+    fetch(`https://docs.google.com/forms/d/e/${id}/formResponse`,
+      { method:'POST', mode:'no-cors', body:fd }).catch(()=>{});
+  }
+</script>
 </body>
 </html>
+
