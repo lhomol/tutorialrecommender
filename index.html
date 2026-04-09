@@ -12,33 +12,30 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --color-primary: #1a3585;       /* darkened from #2347B3 — passes AAA on white */
-    --color-primary-hover: #8b0416; /* darkened from #b4061e — passes AAA on white */
-    --color-accent: #1f5c80;        /* darkened from #387AA6 — passes AAA on white */
+    --color-primary: #1a3585;
+    --color-primary-hover: #8b0416;
+    --color-accent: #1f5c80;
     --color-text: #1a1a1a;
-    --color-text-light: #3d444b;    /* darkened from #495057 — passes AAA on white */
+    --color-text-light: #3d444b;
     --color-bg: #f4f4f4;
     --color-white: #ffffff;
-    --color-border: #767676;        /* darkened for AAA on white backgrounds */
-    --color-success: #1a5c1e;       /* darkened from #2e7d32 — passes AAA on light green */
+    --color-border: #767676;
+    --color-success: #1a5c1e;
     --color-success-bg: #d4edda;
-    --color-focus: #FFD700;         /* gold focus ring — high contrast on both light and dark */
-    --color-focus-dark: #1a1a1a;    /* dark offset ring to ensure visibility on all backgrounds */
-
-    /* Meta tag colours — all pass AAA on their backgrounds */
-    --meta-cat-text: #0d3d52;       /* AAA on #d6eaf5 */
+    --color-focus: #FFD700;
+    --color-focus-dark: #1a1a1a;
+    --meta-cat-text: #0d3d52;
     --meta-cat-bg: #d6eaf5;
     --meta-cat-border: #0d3d52;
-    --meta-fmt-text: #3b1a52;       /* AAA on #e8daf0 */
+    --meta-fmt-text: #3b1a52;
     --meta-fmt-bg: #e8daf0;
     --meta-fmt-border: #3b1a52;
-    --meta-pref-text: #5c3d00;      /* AAA on #fdefc3 */
+    --meta-pref-text: #5c3d00;
     --meta-pref-bg: #fdefc3;
     --meta-pref-border: #5c3d00;
-    --meta-diff-text: #5c2000;      /* AAA on #fde3cc */
+    --meta-diff-text: #5c2000;
     --meta-diff-bg: #fde3cc;
     --meta-diff-border: #5c2000;
-
     --font-main: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
@@ -51,8 +48,13 @@
     flex-direction: column;
   }
 
+  /* ── External link icon ── */
+  .ext-icon {
+    font-style: normal;
+    margin-left: 2px;
+  }
+
   /* ── Shared focus style ── */
-  /* Applied via :focus-visible so mouse users are unaffected */
   :focus-visible {
     outline: 3px solid var(--color-focus);
     outline-offset: 3px;
@@ -69,7 +71,6 @@
     border: 0;
   }
 
-  /* ── Live region ── */
   #search-announcer {
     position: absolute;
     width: 1px; height: 1px;
@@ -80,7 +81,6 @@
     border: 0;
   }
 
-  /* ── Layout ── */
   .container {
     max-width: 1100px;
     width: 100%;
@@ -116,7 +116,6 @@
     border-left: 4px solid var(--color-success);
   }
 
-  /* ── Search section ── */
   .search-section {
     background: var(--color-white);
     border: 1px solid var(--color-border);
@@ -156,7 +155,7 @@
     outline-offset: 3px;
     box-shadow: 0 0 0 5px var(--color-focus-dark);
   }
-  .search-input::placeholder { color: #595959; } /* AAA on white */
+  .search-input::placeholder { color: #595959; }
 
   .search-button {
     position: absolute;
@@ -177,7 +176,6 @@
   }
   .search-button:hover { background: var(--color-primary-hover); }
 
-  /* ── Filters ── */
   .filters {
     display: flex;
     gap: 20px;
@@ -207,7 +205,6 @@
     background: var(--color-white);
   }
 
-  /* ── Suggested searches ── */
   .examples {
     display: flex;
     gap: 8px;
@@ -238,7 +235,6 @@
     color: var(--color-white);
   }
 
-  /* ── Results ── */
   .results-section h3 {
     font-size: 1.2rem;
     font-weight: 900;
@@ -246,7 +242,6 @@
     margin-bottom: 6px;
   }
 
-  /* ── Tutorial card ── */
   article.tutorial-card {
     background: var(--color-white);
     border: 1px solid var(--color-border);
@@ -290,26 +285,10 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
-  .meta-category {
-    background: var(--meta-cat-bg);
-    color: var(--meta-cat-text);
-    border: 1px solid var(--meta-cat-border);
-  }
-  .meta-format {
-    background: var(--meta-fmt-bg);
-    color: var(--meta-fmt-text);
-    border: 1px solid var(--meta-fmt-border);
-  }
-  .preferred-format {
-    background: var(--meta-pref-bg);
-    color: var(--meta-pref-text);
-    border: 1px solid var(--meta-pref-border);
-  }
-  .meta-difficulty {
-    background: var(--meta-diff-bg);
-    color: var(--meta-diff-text);
-    border: 1px solid var(--meta-diff-border);
-  }
+  .meta-category { background: var(--meta-cat-bg); color: var(--meta-cat-text); border: 1px solid var(--meta-cat-border); }
+  .meta-format   { background: var(--meta-fmt-bg); color: var(--meta-fmt-text); border: 1px solid var(--meta-fmt-border); }
+  .preferred-format { background: var(--meta-pref-bg); color: var(--meta-pref-text); border: 1px solid var(--meta-pref-border); }
+  .meta-difficulty  { background: var(--meta-diff-bg); color: var(--meta-diff-text); border: 1px solid var(--meta-diff-border); }
 
   .tutorial-description {
     color: var(--color-text-light);
@@ -318,7 +297,6 @@
     font-size: 0.93rem;
   }
 
-  /* ── Access block ── */
   .access-tutorial-block { margin-bottom: 10px; }
   .access-tutorial-label {
     font-size: 0.88rem;
@@ -340,7 +318,6 @@
   }
   .access-button:hover { background: var(--color-primary-hover); color: var(--color-white); }
 
-  /* ── Transcript notice ── */
   .transcript-notice {
     margin-top: 10px;
     padding: 8px 12px;
@@ -350,14 +327,9 @@
     font-size: 0.85rem;
     color: var(--color-text);
   }
-  .transcript-notice a {
-    color: var(--color-primary);
-    font-weight: 700;
-    text-decoration: underline;
-  }
+  .transcript-notice a { color: var(--color-primary); font-weight: 700; text-decoration: underline; }
   .transcript-notice a:hover { color: var(--color-primary-hover); }
 
-  /* ── Alternative formats ── */
   .alternative-formats {
     background: var(--color-bg);
     padding: 10px 14px;
@@ -382,7 +354,6 @@
   }
   .format-link:hover { background: var(--color-primary); color: var(--color-white); }
 
-  /* ── Smart matching ── */
   .smart-matching {
     background: var(--color-success-bg);
     color: var(--color-success);
@@ -394,7 +365,6 @@
     border-left: 3px solid var(--color-success);
   }
 
-  /* ── Relevance bar ── */
   .relevance-indicator {
     display: flex;
     align-items: center;
@@ -404,7 +374,7 @@
   .relevance-bar {
     flex: 1;
     height: 5px;
-    background: #c0c0c0; /* darker track so bar has contrast against it */
+    background: #c0c0c0;
     border-radius: 3px;
     overflow: hidden;
   }
@@ -415,46 +385,30 @@
   }
   .relevance-score {
     font-size: 11px;
-    color: var(--color-text-light); /* #3d444b passes AAA on white */
+    color: var(--color-text-light);
     font-weight: 700;
     white-space: nowrap;
   }
 
-  /* ── Empty / no results ── */
   .empty-state {
     text-align: center;
     color: var(--color-text-light);
     padding: 50px 20px;
   }
-  .empty-state h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--color-text);
-  }
+  .empty-state h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--color-text); }
   .empty-state p { font-size: 0.9rem; }
 
-  .no-results {
-    text-align: center;
-    padding: 40px;
-    color: var(--color-primary-hover);
-  }
+  .no-results { text-align: center; padding: 40px; color: var(--color-primary-hover); }
   .no-results h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
 
-  /* ── Responsive ── */
   @media (max-width: 768px) {
     .container { padding: 20px 16px 40px; }
     .search-section { padding: 20px; }
     .filters { flex-direction: column; gap: 12px; }
     .tutorial-meta { flex-direction: column; align-items: flex-start; }
-    /* Stack search button below input at small sizes */
     .search-container { display: flex; flex-direction: column; gap: 8px; }
     .search-input { padding-right: 16px; }
-    .search-button {
-      position: static;
-      transform: none;
-      align-self: flex-start;
-    }
+    .search-button { position: static; transform: none; align-self: flex-start; }
   }
 </style>
 </head>
@@ -463,12 +417,10 @@
 <div class="container">
   <div class="page-title-area">
     <h2>Research Tutorial Finder</h2>
-    <p>Search across all library tutorials to find the best match for your research needs.</p>
+    <p>Search across all <span id="tutorial-count"></span> library tutorials to find the best match for your research needs.</p>
   </div>
 
   <div id="uploadStatus" class="status-message" role="status">Loading tutorials…</div>
-
-  <!-- ARIA live region for search result announcements -->
   <div id="search-announcer" aria-live="polite" aria-atomic="true"></div>
 
   <div class="search-section">
@@ -528,6 +480,52 @@
 </div>
 
 <script>
+  'use strict';
+
+  /* ── XSS-safe escaping ── */
+  function escapeHTML(str) {
+    if (!str) return '';
+    var div = document.createElement('div');
+    div.textContent = str;
+    // div.innerHTML escapes &, <, > but NOT quotes.
+    // We must also escape quotes so the result is safe
+    // inside HTML attributes (e.g. aria-label="...").
+    return div.innerHTML
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  /**
+   * Validate that a URL uses an allowed protocol.
+   * Returns the URL unchanged if safe, or '#' if suspicious.
+   */
+  function sanitizeURL(url) {
+    if (!url) return '#';
+    var trimmed = url.trim();
+    // Only allow http(s) protocols — blocks javascript:, data:, vbscript:, etc.
+    if (/^https?:\/\//i.test(trimmed)) {
+      // Encode quotes so the URL can't break out of href="..." attributes
+      return trimmed.replace(/"/g, '%22').replace(/'/g, '%27');
+    }
+    // Also allow protocol-relative URLs
+    if (/^\/\//i.test(trimmed)) {
+      return trimmed.replace(/"/g, '%22').replace(/'/g, '%27');
+    }
+    return '#';
+  }
+
+  /* ── Helpers ── */
+  function extIcon() {
+    return '<span class="ext-icon" aria-hidden="true">↗</span>'
+         + '<span class="sr-only"> (Opens in new window)</span>';
+  }
+
+  function externalLink(href, visibleText, cssClass) {
+    return '<a href="' + sanitizeURL(href) + '" target="_blank" rel="noopener noreferrer"'
+         + (cssClass ? ' class="' + cssClass + '"' : '') + '>'
+         + escapeHTML(visibleText) + ' ' + extIcon() + '</a>';
+  }
+
   const stopWords = new Set([
     'i','me','my','we','our','you','your','he','him','his',
     'she','her','it','its','they','them','their','what','which',
@@ -539,30 +537,303 @@
     'will','just','should','now'
   ]);
 
-  let tutorials = [];
+  const minorWords = new Set([
+    'a','an','the','and','but','or','nor','for','so','yet',
+    'at','by','in','of','on','to','up','as','is','it'
+  ]);
 
-  const DOC_FORMATS = ['PDF','PowerPoint','Word document'];
-  function isDoc(fmt) { return DOC_FORMATS.includes(fmt); }
-  function linkAttrs(fmt) {
-    return isDoc(fmt)
-      ? { target:'_blank', rel:'noopener noreferrer', newTab:true }
-      : { target:'_self',  rel:'', newTab:false };
+  function toTitleCase(str) {
+    if (!str) return str;
+    return str.replace(/\S+/g, function(word, offset) {
+      var clean = word.toLowerCase();
+      if (offset !== 0 && minorWords.has(clean)) return clean;
+      return clean.charAt(0).toUpperCase() + clean.slice(1);
+    });
   }
 
-  /* Build an <a> with optional sr-only new-tab notice and sr-only title context */
-  function buildLink(href, visibleText, fmt, cssClass, srTitle) {
-    const a = linkAttrs(fmt);
-    const relAttr = a.rel ? ` rel="${a.rel}"` : '';
-    const newTabNote = a.newTab
-      ? `<span class="sr-only"> (opens in new tab)</span>`
-      : '';
-    const titleNote = srTitle
-      ? `<span class="sr-only"> for ${srTitle}</span>`
-      : '';
-    return `<a href="${href}" target="${a.target}"${relAttr} class="${cssClass}">${visibleText}${titleNote}${newTabNote}</a>`;
+  function mapCategory(c) {
+    if (!c) return 'research basics';
+    var l = c.toLowerCase();
+    if (l.includes('cite')) return 'cite sources';
+    if (l.includes('data') || l.includes('statistics')) return 'find sources';
+    if (l.includes('evaluate')) return 'evaluate sources';
+    if (l.includes('ai')) return 'generative AI';
+    if (l.includes('scholarly') || l.includes('peer') || l.includes('search')
+        || l.includes('sos') || l.includes('subject')) return 'find sources';
+    return 'research basics';
   }
 
-  const tutorialData = [
+  function mapFormat(f) {
+    if (!f) return 'interactive module';
+    var l = f.toLowerCase();
+    if (l.includes('panopto') || l.includes('video')) return 'Video';
+    if (l.includes('pdf')) return 'PDF';
+    if (l.includes('powerpoint') || l.includes('ppt')) return 'PowerPoint';
+    if (l.includes('word')) return 'Word document';
+    if (l.includes('h5p') || l.includes('html')) return 'interactive module';
+    return 'interactive module';
+  }
+
+  function createGroupingKey(t) {
+    return t.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function processQuery(q) {
+    var words = q.toLowerCase().split(/\s+/).filter(function(w) { return w.length > 1; });
+    var meaningful = words.filter(function(w) { return !stopWords.has(w); });
+    return {
+      originalQuery: q,
+      meaningfulWords: meaningful.length ? meaningful : words,
+      processedQuery: meaningful.join(' ')
+    };
+  }
+
+  function calcRelevance(q, t) {
+    var p = processQuery(q);
+    var score = 0;
+    var matches = [];
+    p.meaningfulWords.forEach(function(w) {
+      if (t.title.toLowerCase().includes(w)) { score += 10; matches.push('title: "' + w + '"'); }
+      if (t.searchContent.includes(w)) score += 3;
+      if (t.category.toLowerCase().includes(w)) { score += 5; matches.push('category: "' + w + '"'); }
+    });
+    if (t.searchContent.includes(p.processedQuery)) { score += 15; matches.push('exact phrase'); }
+    return { score: score, matches: matches };
+  }
+
+  var SCORE_CEILING = 40;
+  function scorePct(s) { return Math.min(Math.round((s / SCORE_CEILING) * 100), 100); }
+
+  /* ── Data processing ── */
+  var tutorials = [];
+
+  function processEmbeddedData() {
+    var groups = new Map();
+
+    tutorialData.forEach(function(row) {
+      if (!row['Tutorial title'] || !row.Link) return;
+      var key = createGroupingKey(row['Tutorial title']);
+      var fmt = mapFormat(row.Format);
+      var cat = mapCategory(row.Category);
+      var hasTx = !!(row.transcript_link && row.transcript_link.trim());
+      var searchContent = [
+        row['Tutorial title'], row.primary_topic, row.secondary_topics,
+        row.learning_objectives, row.student_questions_addressed,
+        row.search_intent_keywords, row.tools_mentioned, row.when_to_use
+      ].join(' ').toLowerCase();
+
+      var obj = {
+        title: toTitleCase(row['Tutorial title']),
+        category: cat, format: fmt,
+        link: row.Link,
+        transcriptLink: row.transcript_link || null,
+        learningObjectives: row.learning_objectives || '',
+        questionsAddressed: row.student_questions_addressed || '',
+        whenToUse: row.when_to_use || '',
+        primaryTopic: row.primary_topic || '',
+        difficulty: row.difficulty_level || '',
+        searchContent: searchContent,
+        hasTranscript: fmt === 'Video' && hasTx
+      };
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(obj);
+    });
+
+    var fmtPriority = ['Video','PDF','PowerPoint','Word document','interactive module'];
+
+    groups.forEach(function(variants) {
+      if (!variants.length) return;
+      var sel = null;
+      for (var i = 0; i < fmtPriority.length; i++) {
+        var match = variants.find(function(v) { return v.format === fmtPriority[i]; });
+        if (match) { sel = match; break; }
+      }
+      if (!sel) sel = variants[0];
+
+      var desc = sel.learningObjectives
+        || (sel.questionsAddressed ? 'Addresses: ' + sel.questionsAddressed : '')
+        || (sel.whenToUse ? 'Use this when: ' + sel.whenToUse : '')
+        || (sel.primaryTopic ? 'Covers: ' + sel.primaryTopic : '')
+        || 'No description available.';
+
+      var altFmts = variants
+        .filter(function(v) { return v.format !== sel.format; })
+        .map(function(v) { return { format: v.format, link: v.link }; });
+
+      tutorials.push({
+        id: tutorials.length + 1,
+        title: sel.title,
+        category: sel.category,
+        format: sel.format,
+        link: sel.link,
+        transcriptLink: sel.transcriptLink,
+        description: desc,
+        searchContent: sel.searchContent,
+        alternativeFormats: altFmts,
+        hasAlternatives: altFmts.length > 0,
+        hasTranscript: sel.hasTranscript,
+        difficulty: sel.difficulty
+      });
+    });
+
+    var countEl = document.getElementById('tutorial-count');
+    if (countEl) countEl.textContent = tutorials.length;
+    document.getElementById('uploadStatus').style.display = 'none';
+  }
+
+  /* ── Search ── */
+  function searchTutorials() {
+    var query = document.getElementById('searchInput').value.trim();
+    if (!query || !tutorials.length) return;
+
+    var catFilter = document.getElementById('categoryFilter').value;
+    var fmtFilter = document.getElementById('formatFilter').value;
+
+    var results = tutorials
+      .map(function(t) {
+        if (catFilter !== 'all' && t.category !== catFilter) return null;
+        if (fmtFilter !== 'all' && t.format !== fmtFilter) return null;
+        var rel = calcRelevance(query, t);
+        return Object.assign({}, t, { relevanceScore: rel.score, matches: rel.matches });
+      })
+      .filter(function(t) { return t && t.relevanceScore > 0; })
+      .sort(function(a, b) { return b.relevanceScore - a.relevanceScore; })
+      .slice(0, 5);
+
+    logSearch(query, catFilter, fmtFilter, results.length);
+    displayResults(results, query);
+
+    var ann = document.getElementById('search-announcer');
+    ann.textContent = '';
+    requestAnimationFrame(function() {
+      ann.textContent = results.length
+        ? results.length + ' result' + (results.length > 1 ? 's' : '') + ' found for "' + query + '".'
+        : 'No results found for "' + query + '".';
+    });
+  }
+
+  /* ── Display ── */
+  function displayResults(results, query) {
+    var div = document.getElementById('results');
+    var safeQuery = escapeHTML(query);
+
+    if (!results.length) {
+      div.innerHTML = '<div class="no-results"><h3 id="results-heading" tabindex="-1">No tutorials found</h3><p>Try different keywords or adjust your filters.</p></div>';
+      var heading = document.getElementById('results-heading');
+      if (heading) heading.focus();
+      return;
+    }
+
+    var html = '<div style="margin-bottom:20px;"><h3 id="results-heading" tabindex="-1">Top ' + results.length
+      + ' Result' + (results.length > 1 ? 's' : '') + ' for: &ldquo;' + safeQuery + '&rdquo;</h3></div>';
+
+    results.forEach(function(t) {
+      var pct = scorePct(t.relevanceScore);
+
+      var safeTitle = escapeHTML(t.title);
+      var safeLink = sanitizeURL(t.link);
+      var safeCategory = escapeHTML(t.category);
+      var safeFormat = escapeHTML(t.format);
+      var safeDifficulty = escapeHTML(t.difficulty);
+      var safeDescription = escapeHTML(t.description);
+
+      var txHTML = '';
+      if (t.hasTranscript && t.transcriptLink) {
+        var safeTxLink = sanitizeURL(t.transcriptLink);
+        txHTML = '<div class="transcript-notice">A '
+          + '<a href="' + safeTxLink + '" target="_blank" rel="noopener noreferrer">'
+          + 'descriptive transcript'
+          + '<span class="sr-only"> for ' + safeTitle + '</span>'
+          + ' ' + extIcon()
+          + '</a> for this video is available.</div>';
+      }
+
+      var altHTML = '';
+      if (t.hasAlternatives) {
+        var altLinks = t.alternativeFormats.map(function(af) {
+          return '<a href="' + sanitizeURL(af.link) + '" target="_blank" rel="noopener noreferrer" class="format-link">'
+            + escapeHTML(af.format)
+            + '<span class="sr-only"> version of ' + safeTitle + '</span>'
+            + ' ' + extIcon()
+            + '</a>';
+        }).join('');
+        altHTML = '<div class="alternative-formats"><strong>Also available as:</strong> ' + altLinks + '</div>';
+      }
+
+      var matchHTML = '';
+      if (t.matches && t.matches.length) {
+        matchHTML = '<div class="smart-matching"><strong>Matched on:</strong> ' + escapeHTML(t.matches.join(', ')) + '</div>';
+      }
+
+      html += '<article class="tutorial-card" aria-label="' + safeTitle + '">'
+        + '<h4 class="tutorial-title">'
+        + '<a href="' + safeLink + '" target="_blank" rel="noopener noreferrer">'
+        + safeTitle + ' ' + extIcon()
+        + '</a></h4>'
+        + '<div class="tutorial-meta">'
+        + '<span class="meta-tag meta-category">' + safeCategory + '</span>'
+        + '<span class="meta-tag meta-format' + (t.hasAlternatives ? ' preferred-format' : '') + '">' + safeFormat + '</span>'
+        + (t.difficulty ? '<span class="meta-tag meta-difficulty">Level: ' + safeDifficulty + '</span>' : '')
+        + '</div>'
+        + '<div class="tutorial-description">' + safeDescription + '</div>'
+        + '<div class="access-tutorial-block">'
+        + '<p class="access-tutorial-label">Access Tutorial:</p>'
+        + '<a href="' + safeLink + '" target="_blank" rel="noopener noreferrer" class="access-button">'
+        + safeTitle + ' ' + extIcon()
+        + '</a></div>'
+        + txHTML
+        + altHTML
+        + matchHTML
+        + '<div class="relevance-indicator">'
+        + '<div class="relevance-bar" role="presentation">'
+        + '<div class="relevance-fill" style="width:' + pct + '%"></div>'
+        + '</div>'
+        + '<div class="relevance-score" aria-label="Relevance ' + pct + ' percent">' + pct + '%</div>'
+        + '</div>'
+        + '</article>';
+    });
+
+    div.innerHTML = html;
+    var heading = document.getElementById('results-heading');
+    if (heading) heading.focus();
+  }
+
+  /* ── Suggested search buttons ── */
+  function useExample(el) {
+    if (!tutorials.length) { alert('Tutorials are still loading, please wait.'); return; }
+    document.getElementById('searchInput').value = el.textContent;
+    searchTutorials();
+  }
+
+  /* ── Analytics ── */
+  function logSearch(query, cat, fmt, count) {
+    var id = '1FAIpQLSd8wDip8KCcyWioZUxtQFr3OXw2KKMjdMUAAyRpprA0r6_Omg';
+    var fd = new FormData();
+    fd.append('entry.1450901702', query || 'empty');
+    fd.append('entry.1796583750', cat || 'all');
+    fd.append('entry.708025292', fmt || 'all');
+    fd.append('entry.1349260545', count.toString());
+    fd.append('entry.1336855019', new Date().toISOString());
+    fetch('https://docs.google.com/forms/d/e/' + id + '/formResponse',
+      { method: 'POST', mode: 'no-cors', body: fd }).catch(function() {});
+  }
+
+  /* ── Font Awesome load detection ── */
+  document.fonts.ready.then(function() {
+    var testEl = document.createElement('span');
+    testEl.className = 'fa';
+    testEl.style.cssText = 'position:absolute;visibility:hidden;font-size:16px';
+    testEl.textContent = '\uf08e';
+    document.body.appendChild(testEl);
+    var width = testEl.getBoundingClientRect().width;
+    document.body.removeChild(testEl);
+    if (width < 4) {
+      document.documentElement.classList.add('no-fa');
+    }
+  });
+
+  /* ── Tutorial data ── */
+  var tutorialData = [
   {
     "Category": "Cite Sources",
     "Tutorial title": "APA reference list",
@@ -758,38 +1029,6 @@
   {
     "Category": "Data & Statistics",
     "Tutorial title": "How do I find data?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42218502",
-    "transcript_link": "",
-    "primary_topic": "Data Discovery",
-    "secondary_topics": "Data sources, sources of data",
-    "learning_objectives": "Learn to locate data by examining scholarly articles and following references to original sources",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "Where do I find data? How do I locate original data sources?",
-    "search_intent_keywords": "find data, data sources, original data, research data, longitudinal data",
-    "tools_mentioned": "",
-    "when_to_use": "When needing to locate original data sources for research"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "How do I find data?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967843",
-    "transcript_link": "",
-    "primary_topic": "Data Discovery",
-    "secondary_topics": "Data sources, sources of data",
-    "learning_objectives": "Learn to locate data by examining scholarly articles and following references to original sources",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "Where do I find data? How do I locate original data sources?",
-    "search_intent_keywords": "find data, data sources, original data, research data, longitudinal data",
-    "tools_mentioned": "",
-    "when_to_use": "When needing to locate original data sources for research"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "How do I find data?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=94c370a2-cde4-41c0-80e1-ab92012162e3",
@@ -802,38 +1041,6 @@
     "search_intent_keywords": "find data, data sources, original data, research data, longitudinal data",
     "tools_mentioned": "",
     "when_to_use": "When needing to locate original data sources for research"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "How do I find statistics?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42240551",
-    "transcript_link": "",
-    "primary_topic": "Statistics Discovery",
-    "secondary_topics": "Statistical databases, Subject guides, statistical sources",
-    "learning_objectives": "Learn methods for locating statistics through library resources",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "Where do I find statistics? How do I locate statistics for my research?",
-    "search_intent_keywords": "find statistics, statistics sources, statistical research, subject guides",
-    "tools_mentioned": "",
-    "when_to_use": "When quantitative data is needed"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "How do I find statistics?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967861",
-    "transcript_link": "",
-    "primary_topic": "Statistics Discovery",
-    "secondary_topics": "Statistical databases, Subject guides, statistical sources",
-    "learning_objectives": "Learn methods for locating statistics through library resources",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "Where do I find statistics?",
-    "search_intent_keywords": "find statistics, statistics sources, statistical research, subject guides",
-    "tools_mentioned": "",
-    "when_to_use": "When quantitative data is needed"
   },
   {
     "Category": "Data & Statistics",
@@ -858,38 +1065,6 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c0c13e50-a0c8-4deb-9cfd-ab9201225cc4",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/CitingData",
-    "primary_topic": "Data and statistics citation",
-    "secondary_topics": "APA format, IEEE format, Data sources",
-    "learning_objectives": "Learn proper citation formats for data and statistics in academic styles",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I cite statistics? How do I cite data?",
-    "search_intent_keywords": "cite data, statistics citation, APA, IEEE, dataset reference, cite statistics, cite stats, data citation, statistical reference",
-    "tools_mentioned": "",
-    "when_to_use": "When writing papers incorporating statistics or data"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "Cite data and statistics",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42260877",
-    "transcript_link": "",
-    "primary_topic": "Data and statistics citation",
-    "secondary_topics": "APA format, IEEE format, Data sources",
-    "learning_objectives": "Learn proper citation formats for data and statistics in academic styles",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I cite statistics? How do I cite data?",
-    "search_intent_keywords": "cite data, statistics citation, APA, IEEE, dataset reference, cite statistics, cite stats, data citation, statistical reference",
-    "tools_mentioned": "",
-    "when_to_use": "When writing papers incorporating statistics or data"
-  },
-  {
-    "Category": "Data & Statistics",
-    "Tutorial title": "Cite data and statistics",
-    "Tutorial type": "Slides",
-    "Format": "PowerPoint",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69657765",
-    "transcript_link": "",
     "primary_topic": "Data and statistics citation",
     "secondary_topics": "APA format, IEEE format, Data sources",
     "learning_objectives": "Learn proper citation formats for data and statistics in academic styles",
@@ -934,38 +1109,6 @@
   {
     "Category": "Evaluate Sources",
     "Tutorial title": "How do I evaluate articles and journals?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42052968",
-    "transcript_link": "",
-    "primary_topic": "Article and Journal Evaluation",
-    "secondary_topics": "Article evaluation, Journal credibility, article credibility, journal evaluation",
-    "learning_objectives": "Learn to assess articles and journals using systematic evaluation criteria",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I evaluate articles? Is this journal credible? What makes good research?",
-    "search_intent_keywords": "evaluate articles, journal credibility, journal assessment, source evaluation, evaluate journals, article credibility",
-    "tools_mentioned": "",
-    "when_to_use": "When evaluating scholarly articles for research"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How do I evaluate articles and journals?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69620241",
-    "transcript_link": "",
-    "primary_topic": "Article and Journal Evaluation",
-    "secondary_topics": "Article evaluation, Journal credibility",
-    "learning_objectives": "Learn to assess articles and journals using systematic evaluation criteria",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I evaluate articles? Is this journal credible?",
-    "search_intent_keywords": "evaluate articles, journal credibility, research assessment, source evaluation",
-    "tools_mentioned": "Various academic databases",
-    "when_to_use": "When evaluating scholarly articles for research"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How do I evaluate articles and journals?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a39445d9-295f-4ef9-a677-ab9201221b38",
@@ -978,38 +1121,6 @@
     "search_intent_keywords": "evaluate articles, journal credibility, research assessment, source evaluation",
     "tools_mentioned": "Various academic databases",
     "when_to_use": "When evaluating scholarly articles for research"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How do I evaluate books and book chapters?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42052975",
-    "transcript_link": "",
-    "primary_topic": "Book Evaluation",
-    "secondary_topics": "Book assessment, Author credentials, book relevance",
-    "learning_objectives": "Learn systematic approach to evaluating books and book chapters for research",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate books? Are books credible sources?",
-    "search_intent_keywords": "evaluate books, book evaluation, book assessment, academic books, university press",
-    "tools_mentioned": "",
-    "when_to_use": "When using books as research sources"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How do I evaluate books and book chapters?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69620460",
-    "transcript_link": "",
-    "primary_topic": "Book Evaluation",
-    "secondary_topics": "Book assessment, Author credentials",
-    "learning_objectives": "Learn systematic approach to evaluating books and book chapters for research",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate books?",
-    "search_intent_keywords": "evaluate books, book evaluation, source assessment, scholarly books",
-    "tools_mentioned": "",
-    "when_to_use": "When using books as research sources"
   },
   {
     "Category": "Evaluate Sources",
@@ -1063,22 +1174,6 @@
     "Category": "Evaluate Sources",
     "Tutorial title": "How to evaluate articles and journals",
     "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72518841",
-    "transcript_link": "",
-    "primary_topic": "Article and Journal Evaluation",
-    "secondary_topics": "Article evaluation, Journal credibility",
-    "learning_objectives": "Learn to assess articles and journals using systematic evaluation criteria",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I evaluate articles? Is this journal credible?",
-    "search_intent_keywords": "evaluate articles, journal credibility, research assessment, source evaluation",
-    "tools_mentioned": "",
-    "when_to_use": "When evaluating scholarly articles for research"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate articles and journals",
-    "Tutorial type": "Infographic",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=41859042",
     "transcript_link": "",
@@ -1090,22 +1185,6 @@
     "search_intent_keywords": "evaluate articles, journal credibility, research assessment, source evaluation",
     "tools_mentioned": "",
     "when_to_use": "When evaluating scholarly articles for research"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate books and book chapters",
-    "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72384499",
-    "transcript_link": "",
-    "primary_topic": "Book Evaluation",
-    "secondary_topics": "Book assessment, Author credentials",
-    "learning_objectives": "Learn systematic approach to evaluating books and book chapters for research",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate books?",
-    "search_intent_keywords": "evaluate books, book evaluation, source assessment, scholarly books",
-    "tools_mentioned": "",
-    "when_to_use": "When using books as research sources"
   },
   {
     "Category": "Evaluate Sources",
@@ -1142,38 +1221,6 @@
   {
     "Category": "Evaluate Sources",
     "Tutorial title": "How to evaluate websites: evaluating the content",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69430142",
-    "transcript_link": "",
-    "primary_topic": "Website Content Evaluation",
-    "secondary_topics": "Content assessment, Information quality",
-    "learning_objectives": "Learn to evaluate website content using systematic criteria after source verification",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate website content? Is this site's information current?",
-    "search_intent_keywords": "website content evaluation, website information quality, website reliability, website credibility",
-    "tools_mentioned": "",
-    "when_to_use": "When using web sources for academic work"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate websites: evaluating the content",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69422442",
-    "transcript_link": "",
-    "primary_topic": "Website Content Evaluation",
-    "secondary_topics": "Content assessment, Information quality",
-    "learning_objectives": "Learn to evaluate website content using systematic criteria after source verification",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate website content?",
-    "search_intent_keywords": "website content evaluation, website information quality, website reliability, website credibility",
-    "tools_mentioned": "",
-    "when_to_use": "When using web sources for academic work"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate websites: evaluating the content",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fb2700ed-87e7-43e4-bc16-af480142b787",
@@ -1184,38 +1231,6 @@
     "difficulty_level": "Beginner to Intermediate",
     "student_questions_addressed": "How do I evaluate website content?",
     "search_intent_keywords": "website content evaluation, website information quality, website reliability, website credibility",
-    "tools_mentioned": "",
-    "when_to_use": "When using web sources for academic work"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate websites: evaluating the source",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=42052989",
-    "transcript_link": "",
-    "primary_topic": "Website Evaluation",
-    "secondary_topics": "Website credibility, External verification, Fact checking",
-    "learning_objectives": "Learn efficient website evaluation by evaluating what other sources say about it first",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate websites? Is this site credible?",
-    "search_intent_keywords": "evaluate websites, web source credibility, website reliability, website authority, website trustworthiness",
-    "tools_mentioned": "",
-    "when_to_use": "When using web sources for academic work"
-  },
-  {
-    "Category": "Evaluate Sources",
-    "Tutorial title": "How to evaluate websites: evaluating the source",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69419841",
-    "transcript_link": "",
-    "primary_topic": "Website Evaluation",
-    "secondary_topics": "Website credibility, External verification",
-    "learning_objectives": "Learn efficient website evaluation by evaluating what other sources say about it first",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I evaluate websites? Is this site credible?",
-    "search_intent_keywords": "evaluate websites, web source credibility, website reliability, website authority, website trustworthiness",
     "tools_mentioned": "",
     "when_to_use": "When using web sources for academic work"
   },
@@ -1363,22 +1378,7 @@
     "tools_mentioned": "Claude, ChatGPT, Scite.ai, Scopus",
     "when_to_use": "When using generative AI tools for any purpose"
   },
-  {
-    "Category": "Generative AI",
-    "Tutorial title": "How can generative AI help with my research?",
-    "Tutorial type": "Module",
-    "Format": "H5P",
-    "Link": "https://northeastern.h5p.com/content/1292296475652880788",
-    "transcript_link": "",
-    "primary_topic": "AI Research Applications",
-    "secondary_topics": "AI Research assistance, AI tools, AI Research workflow",
-    "learning_objectives": "Learn practical applications of generative AI tools in the research process",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How can AI help my research? What AI tools are useful?",
-    "search_intent_keywords": "AI research tools, AI research assistance, generative AI, AI applications",
-    "tools_mentioned": "Scite.ai, Research Rabbit, Elicit, ChatGPT, Claude",
-    "when_to_use": "When considering AI integration into research workflow"
-  },
+  
   {
     "Category": "Generative AI",
     "Tutorial title": "AI Basics",
@@ -1414,38 +1414,6 @@
   {
     "Category": "Research Basics",
     "Tutorial title": "How do I build an effective search?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=35195601",
-    "transcript_link": "",
-    "primary_topic": "Search Strategy",
-    "secondary_topics": "Boolean operators, Keywords, Synonyms",
-    "learning_objectives": "Learn to build effective database searches using Boolean operators and keyword strategies",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I search databases effectively? How do I use Boolean operators?",
-    "search_intent_keywords": "effective search, boolean operators, database search, keywords, search strategy",
-    "tools_mentioned": "",
-    "when_to_use": "When students struggle with search construction"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I build an effective search?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68257371",
-    "transcript_link": "",
-    "primary_topic": "Search Strategy",
-    "secondary_topics": "Boolean operators, Keywords, Synonyms",
-    "learning_objectives": "Learn to build effective database searches using Boolean operators and keyword strategies",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I search databases effectively?",
-    "search_intent_keywords": "effective search, boolean operators, database search, keywords, search strategy",
-    "tools_mentioned": "",
-    "when_to_use": "When students struggle with search construction"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I build an effective search?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2ee6b81d-0902-4851-95db-ab92011eb228",
@@ -1462,70 +1430,6 @@
   {
     "Category": "Research Basics",
     "Tutorial title": "How do I choose a research topic?",
-    "Tutorial type": "Checklist",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=36999121",
-    "transcript_link": "",
-    "primary_topic": "Topic Evaluation",
-    "secondary_topics": "Topic assessment, Assignment alignment",
-    "learning_objectives": "Provide systematic checklist for evaluating and selecting research topics",
-    "difficulty_level": "All levels",
-    "student_questions_addressed": "Is my topic good enough? Does it meet requirements?",
-    "search_intent_keywords": "research topic checklist, topic evaluation, topic selection, assignment requirements",
-    "tools_mentioned": "",
-    "when_to_use": "When students have potential topics to evaluate"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I choose a research topic?",
-    "Tutorial type": "Infographic",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=36999138",
-    "transcript_link": "",
-    "primary_topic": "Topic Selection",
-    "secondary_topics": "Assignment analysis, Background research, Topic refinement",
-    "learning_objectives": "Learn systematic approach to choosing and refining research topics",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I choose a good research topic?",
-    "search_intent_keywords": "choose topic, research topic, topic selection, narrow topic, broaden topic",
-    "tools_mentioned": "",
-    "when_to_use": "When starting research assignments"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I choose a research topic?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=34404502",
-    "transcript_link": "",
-    "primary_topic": "Topic Selection",
-    "secondary_topics": "Assignment analysis, Background research",
-    "learning_objectives": "Learn systematic approach to choosing and refining research topics",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I choose a good research topic?",
-    "search_intent_keywords": "choose topic, research topic, topic selection, narrow topic, broaden topic",
-    "tools_mentioned": "",
-    "when_to_use": "When starting research assignments"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I choose a research topic?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68257377",
-    "transcript_link": "",
-    "primary_topic": "Topic Selection",
-    "secondary_topics": "Assignment analysis, Background research",
-    "learning_objectives": "Learn systematic approach to choosing and refining research topics",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I choose a good research topic?",
-    "search_intent_keywords": "choose topic, research topic, topic selection, narrow topic, broaden topic",
-    "tools_mentioned": "",
-    "when_to_use": "When starting research assignments"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I choose a research topic?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f2b4726c-d540-4b83-a175-ab92011e7342",
@@ -1538,54 +1442,6 @@
     "search_intent_keywords": "choose topic, research topic, topic selection, narrow topic, broaden topic",
     "tools_mentioned": "",
     "when_to_use": "When starting research assignments"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I develop a research question?",
-    "Tutorial type": "Checklist",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=36999123",
-    "transcript_link": "",
-    "primary_topic": "Question Evaluation",
-    "secondary_topics": "Research question assessment",
-    "learning_objectives": "Provide evaluation criteria for research questions",
-    "difficulty_level": "All levels",
-    "student_questions_addressed": "Is my research question good enough?",
-    "search_intent_keywords": "research question checklist, evaluate research question, good research question",
-    "tools_mentioned": "",
-    "when_to_use": "When students have potential research questions to evaluate"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I develop a research question?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=34405401",
-    "transcript_link": "",
-    "primary_topic": "Research Question development",
-    "secondary_topics": "Question characteristics",
-    "learning_objectives": "Learn to create analytical, focused, complex, and researchable questions",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "What makes a good research question?",
-    "search_intent_keywords": "research question, good research question, analytical question, researchable question",
-    "tools_mentioned": "",
-    "when_to_use": "After selecting a topic, when deciding on a research question"
-  },
-  {
-    "Category": "Research Basics",
-    "Tutorial title": "How do I develop a research question?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68257386",
-    "transcript_link": "",
-    "primary_topic": "Research Question development",
-    "secondary_topics": "Question characteristics",
-    "learning_objectives": "Learn to create analytical, focused, complex, and researchable questions",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "What makes a good research question?",
-    "search_intent_keywords": "research question, good research question, analytical question, researchable question",
-    "tools_mentioned": "",
-    "when_to_use": "After selecting a topic, when deciding on a research question"
   },
   {
     "Category": "Research Basics",
@@ -1621,22 +1477,6 @@
   },
   {
     "Category": "Research Basics",
-    "Tutorial title": "How to find library Databases",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72521058",
-    "transcript_link": "",
-    "primary_topic": "Database Discovery",
-    "secondary_topics": "Subject guides, A-Z database list",
-    "learning_objectives": "Learn two methods for finding appropriate library databases",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I find the right database?",
-    "search_intent_keywords": "find databases, library databases, subject guides, database selection, research databases",
-    "tools_mentioned": "",
-    "when_to_use": "When students need to locate appropriate databases"
-  },
-  {
-    "Category": "Research Basics",
     "Tutorial title": "Six steps for building an effective search",
     "Tutorial type": "Infographic",
     "Format": "PDF",
@@ -1654,38 +1494,6 @@
   {
     "Category": "Scholarly / PR Sources",
     "Tutorial title": "How do I find peer reviewed articles?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=34375481",
-    "transcript_link": "",
-    "primary_topic": "Locating peer reviewed articles",
-    "secondary_topics": "Database searching, Peer review filters",
-    "learning_objectives": "Learn methods for locating peer-reviewed articles using various search tools",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "Where do I find peer reviewed articles?",
-    "search_intent_keywords": "peer reviewed articles, scholarly sources, academic databases, peer review filters",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I find peer reviewed articles?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967735",
-    "transcript_link": "",
-    "primary_topic": "Locating peer reviewed articles",
-    "secondary_topics": "Database searching, Peer review filters",
-    "learning_objectives": "Learn methods for locating peer-reviewed articles using various search tools",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "Where do I find peer reviewed articles?",
-    "search_intent_keywords": "peer reviewed articles, scholarly sources, academic databases, peer review filters",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I find peer reviewed articles?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d0e9ea9f-fe73-47f5-94e6-ab9201211af2",
@@ -1696,70 +1504,6 @@
     "difficulty_level": "Beginner",
     "student_questions_addressed": "Where do I find peer reviewed articles?",
     "search_intent_keywords": "peer reviewed articles, scholarly sources, academic databases, peer review filters",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I know if an article is peer reviewed?",
-    "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72521230",
-    "transcript_link": "",
-    "primary_topic": "Peer Review Verification",
-    "secondary_topics": "Journal verification, Peer review process",
-    "learning_objectives": "Learn systematic process for determining if an article is peer reviewed",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I check if an article is peer reviewed?",
-    "search_intent_keywords": "peer review verification, scholarly sources, journal status",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I know if an article is peer reviewed?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=34404527",
-    "transcript_link": "",
-    "primary_topic": "Peer Review Verification",
-    "secondary_topics": "Journal verification, Peer review process",
-    "learning_objectives": "Learn systematic process for determining if an article is peer reviewed",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I check if an article is peer reviewed?",
-    "search_intent_keywords": "peer review verification, scholarly sources, journal status",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I know if an article is peer reviewed?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967758",
-    "transcript_link": "",
-    "primary_topic": "Peer Review Verification",
-    "secondary_topics": "Journal verification, Peer review process",
-    "learning_objectives": "Learn systematic process for determining if an article is peer reviewed",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I check if an article is peer reviewed?",
-    "search_intent_keywords": "peer review verification, scholarly sources, journal status",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "How do I know if an article is peer reviewed?",
-    "Tutorial type": "Infographic",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=58877700",
-    "transcript_link": "",
-    "primary_topic": "Peer Review Verification",
-    "secondary_topics": "Journal verification, Peer review process",
-    "learning_objectives": "Learn systematic process for determining if an article is peer reviewed",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I check if an article is peer reviewed?",
-    "search_intent_keywords": "peer review verification, scholarly sources, journal status",
     "tools_mentioned": "",
     "when_to_use": "When academic assignments require scholarly sources"
   },
@@ -1782,54 +1526,6 @@
   {
     "Category": "Scholarly / PR Sources",
     "Tutorial title": "Scholarly vs. Non-Scholarly sources",
-    "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=71974328",
-    "transcript_link": "",
-    "primary_topic": "Academic Source Evaluation",
-    "secondary_topics": "Publication types, Academic sources",
-    "learning_objectives": "Learn to identify and distinguish between scholarly and non-scholarly sources",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I identify scholarly sources?",
-    "search_intent_keywords": "scholarly sources, non-scholarly sources, academic sources, source evaluation, popular sources",
-    "tools_mentioned": "",
-    "when_to_use": "When learning to identify different source types"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "Scholarly vs. Non-Scholarly sources",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=35108780",
-    "transcript_link": "",
-    "primary_topic": "Academic Source Evaluation",
-    "secondary_topics": "Publication types, Academic sources",
-    "learning_objectives": "Learn to identify and distinguish between scholarly and non-scholarly sources",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I identify scholarly sources?",
-    "search_intent_keywords": "scholarly sources, non-scholarly sources, academic sources, source evaluation, popular sources",
-    "tools_mentioned": "",
-    "when_to_use": "When learning to identify different source types"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "Scholarly vs. Non-Scholarly sources",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967654",
-    "transcript_link": "",
-    "primary_topic": "Academic Source Evaluation",
-    "secondary_topics": "Publication types, Academic sources",
-    "learning_objectives": "Learn to identify and distinguish between scholarly and non-scholarly sources",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I identify scholarly sources?",
-    "search_intent_keywords": "scholarly sources, non-scholarly sources, academic sources, source evaluation, popular sources",
-    "tools_mentioned": "",
-    "when_to_use": "When learning to identify different source types"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "Scholarly vs. Non-Scholarly sources",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f9ef690-b060-4b7e-8e34-ab92011ee193",
@@ -1842,54 +1538,6 @@
     "search_intent_keywords": "scholarly sources, non-scholarly sources, academic sources, source evaluation, popular sources",
     "tools_mentioned": "",
     "when_to_use": "When learning to identify different source types"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "Scholarly vs. Non-Scholarly sources",
-    "Tutorial type": "Infographic",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=57493893",
-    "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/scholarlyvs",
-    "primary_topic": "Academic Source Evaluation",
-    "secondary_topics": "Publication types, Academic sources",
-    "learning_objectives": "Learn to identify and distinguish between scholarly and non-scholarly sources",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I identify scholarly sources?",
-    "search_intent_keywords": "scholarly sources, non-scholarly sources, academic sources, source evaluation, popular sources",
-    "tools_mentioned": "",
-    "when_to_use": "When learning to identify different source types"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "What is peer review?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72775284",
-    "transcript_link": "",
-    "primary_topic": "Scholarly Publishing Process",
-    "secondary_topics": "Peer review types, Publication process",
-    "learning_objectives": "Understand the peer review process and its role in scholarly publishing",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "What is peer review? How does peer review work?",
-    "search_intent_keywords": "peer review, scholarly sources, academic publication process",
-    "tools_mentioned": "",
-    "when_to_use": "When academic assignments require scholarly sources"
-  },
-  {
-    "Category": "Scholarly / PR Sources",
-    "Tutorial title": "What is peer review?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguide.lib.neu.edu/ld.php?content_id=72775460",
-    "transcript_link": "",
-    "primary_topic": "Scholarly Process",
-    "secondary_topics": "Peer review types, Publication process",
-    "learning_objectives": "Understand the peer review process and its role in scholarly publishing",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "What is peer review? How does peer review work?",
-    "search_intent_keywords": "peer review, scholarly sources, publication process, academic quality",
-    "tools_mentioned": "Academic journals, Peer review systems",
-    "when_to_use": "When academic assignments require scholarly sources"
   },
   {
     "Category": "Scholarly / PR Sources",
@@ -1919,22 +1567,6 @@
     "learning_objectives": "Learn basic Westlaw search techniques and navigation for legal research",
     "difficulty_level": "Intermediate",
     "student_questions_addressed": "How do I search Westlaw? How do I find legal cases?",
-    "search_intent_keywords": "Westlaw search, legal research, case law, law review articles",
-    "tools_mentioned": "Westlaw Campus Research",
-    "when_to_use": "When conducting legal research and case law analysis"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "Finding cases and law reviews in Westlaw Campus Research",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967320",
-    "transcript_link": "",
-    "primary_topic": "Legal Research",
-    "secondary_topics": "Westlaw navigation, Legal search strategies",
-    "learning_objectives": "Learn basic Westlaw search techniques and navigation for legal research",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I search Westlaw?",
     "search_intent_keywords": "Westlaw search, legal research, case law, law review articles",
     "tools_mentioned": "Westlaw Campus Research",
     "when_to_use": "When conducting legal research and case law analysis"
@@ -1973,42 +1605,10 @@
   },
   {
     "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I find dissertations?",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967364",
-    "transcript_link": "",
-    "primary_topic": "Dissertation Research",
-    "secondary_topics": "Dissertation databases, Thesis searching",
-    "learning_objectives": "Learn to locate dissertations and theses using specialized databases",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "Where do I find dissertations?",
-    "search_intent_keywords": "dissertations, theses, graduate research, dissertation databases",
-    "tools_mentioned": "ProQuest Dissertations & Theses",
-    "when_to_use": "When looking for graduate-level research or specialized topics"
-  },
-  {
-    "Category": "Search Tips & Strategies",
     "Tutorial title": "How do I find journals by subject",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=56626047",
-    "transcript_link": "",
-    "primary_topic": "Subject-specific Journals",
-    "secondary_topics": "Journal Subject classification, Journal discovery",
-    "learning_objectives": "Learn to locate journals within specific subject areas using specialized tools",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I find journals in my field?",
-    "search_intent_keywords": "journals by subject, subject journals, journal discovery",
-    "tools_mentioned": "BrowZine, Journal Citation Reports",
-    "when_to_use": "When seeking publication venues or subject-specific literature"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I find journals by subject",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967427",
     "transcript_link": "",
     "primary_topic": "Subject-specific Journals",
     "secondary_topics": "Journal Subject classification, Journal discovery",
@@ -2037,38 +1637,6 @@
   },
   {
     "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I find more search results?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68257392",
-    "transcript_link": "",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Database expansion, Search broadening",
-    "learning_objectives": "Learn strategies to increase search results when initial searches are insufficient",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I get more results?",
-    "search_intent_keywords": "more search results, expand search, database selection, search broadening",
-    "tools_mentioned": "",
-    "when_to_use": "When initial searches yield insufficient results"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I find more search results?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=36763003",
-    "transcript_link": "",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Database expansion, Search broadening",
-    "learning_objectives": "Learn strategies to increase search results when initial searches are insufficient",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I get more results?",
-    "search_intent_keywords": "more search results, expand search, database selection, search broadening",
-    "tools_mentioned": "",
-    "when_to_use": "When initial searches yield insufficient results"
-  },
-  {
-    "Category": "Search Tips & Strategies",
     "Tutorial title": "How do I narrow my search?",
     "Tutorial type": "Video",
     "Format": "Panopto",
@@ -2085,75 +1653,11 @@
   },
   {
     "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I narrow my search?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=38275206",
-    "transcript_link": "",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Search filtering, Database refinement",
-    "learning_objectives": "Learn techniques to focus search results when searches yield too many results",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I narrow my results?",
-    "search_intent_keywords": "narrow search, refine results, search filtering, focused searching",
-    "tools_mentioned": "",
-    "when_to_use": "When searches yield too many irrelevant results"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I narrow my search?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68257395",
-    "transcript_link": "",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Search filtering, Database refinement",
-    "learning_objectives": "Learn techniques to focus search results when searches yield too many results",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I narrow my results?",
-    "search_intent_keywords": "narrow search, refine results, search filtering, focused searching",
-    "tools_mentioned": "",
-    "when_to_use": "When searches yield too many irrelevant results"
-  },
-  {
-    "Category": "Search Tips & Strategies",
     "Tutorial title": "How do I use a citation to find the full article?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1f400769-018f-4477-a3c1-ab960126f574",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/UsecitationToFindArticle",
-    "primary_topic": "Citation-based Discovery",
-    "secondary_topics": "Citation parsing, Full text access",
-    "learning_objectives": "Learn systematic process for locating full text articles when you have citation information",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I find an article from a citation?",
-    "search_intent_keywords": "citation to full text, article from citation, full text access",
-    "tools_mentioned": "",
-    "when_to_use": "When you have specific citations but need full text access"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I use a citation to find the full article?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=49542704",
-    "transcript_link": "",
-    "primary_topic": "Citation-based Discovery",
-    "secondary_topics": "Citation parsing, Full text access",
-    "learning_objectives": "Learn systematic process for locating full text articles when you have citation information",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I find an article from a citation?",
-    "search_intent_keywords": "citation to full text, article from citation, full text access",
-    "tools_mentioned": "",
-    "when_to_use": "When you have specific citations but need full text access"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How do I use a citation to find the full article?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967398",
-    "transcript_link": "",
     "primary_topic": "Citation-based Discovery",
     "secondary_topics": "Citation parsing, Full text access",
     "learning_objectives": "Learn systematic process for locating full text articles when you have citation information",
@@ -2181,51 +1685,13 @@
   },
   {
     "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to find an e-book",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=49355576",
-    "transcript_link": "",
-    "primary_topic": "E-book Discovery and Access",
-    "secondary_topics": "e-book search, e-book access",
-    "learning_objectives": "Learn to locate, access, and use e-books through library systems",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I find e-books?",
-    "search_intent_keywords": "find ebook, electronic books, online books, digital books, library ebooks",
-    "tools_mentioned": "",
-    "when_to_use": "When students need electronic versions of books"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to find an e-book",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967186",
-    "transcript_link": "",
-    "primary_topic": "E-book Discovery and Access",
-    "secondary_topics": "e-book search, e-book access",
-    "learning_objectives": "Learn to locate, access, and use e-books through library systems",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I find e-books?",
-    "search_intent_keywords": "find ebook, electronic books, online books, digital books, library ebooks",
-    "tools_mentioned": "",
-    "when_to_use": "When students need electronic versions of books"
-  },
-  {
-    "Category": "Search Tips & Strategies",
     "Tutorial title": "How to find books and other resources in the Internet Archive",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=57711162",
-    "transcript_link": "","primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to find books and other resources in the Internet Archive",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967345",
-    "transcript_link": "","primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
+    "transcript_link": "",
+    "primary_topic": "", "secondary_topics": "", "learning_objectives": "", "difficulty_level": "",
+    "student_questions_addressed": "", "search_intent_keywords": "", "tools_mentioned": "", "when_to_use": ""
   },
   {
     "Category": "Search Tips & Strategies",
@@ -2239,22 +1705,6 @@
     "learning_objectives": "Learn three methods for finding case studies from most to least precise",
     "difficulty_level": "Beginner to Intermediate",
     "student_questions_addressed": "How do I find case studies? Where are business cases?",
-    "search_intent_keywords": "case studies, business cases, case study databases, case study research",
-    "tools_mentioned": "Harvard Business School Case Studies",
-    "when_to_use": "When case studies are required for assignments"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to find case studies",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72804876",
-    "transcript_link": "",
-    "primary_topic": "Case Study Research",
-    "secondary_topics": "Business cases, case study databases",
-    "learning_objectives": "Learn three methods for finding case studies from most to least precise",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I find case studies?",
     "search_intent_keywords": "case studies, business cases, case study databases, case study research",
     "tools_mentioned": "Harvard Business School Case Studies",
     "when_to_use": "When case studies are required for assignments"
@@ -2277,42 +1727,10 @@
   },
   {
     "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to find streaming media at the library",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967204",
-    "transcript_link": "",
-    "primary_topic": "Media Resources",
-    "secondary_topics": "streaming audio, streaming video",
-    "learning_objectives": "Learn two strategies for finding streaming audio and video content",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I find videos/audio?",
-    "search_intent_keywords": "streaming media, video, audio, library media resources",
-    "tools_mentioned": "",
-    "when_to_use": "When students need multimedia resources"
-  },
-  {
-    "Category": "Search Tips & Strategies",
     "Tutorial title": "How to keep up with the conversation",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=56600447",
-    "transcript_link": "",
-    "primary_topic": "Research Alerts",
-    "secondary_topics": "Search alerts, Publication alerts",
-    "learning_objectives": "Learn to set up alerts across multiple platforms to stay current with research",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I stay updated on my research topic?",
-    "search_intent_keywords": "research alerts, search alerts, publication alerts, staying current",
-    "tools_mentioned": "",
-    "when_to_use": "When researchers need to monitor ongoing developments"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "How to keep up with the conversation",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967480",
     "transcript_link": "",
     "primary_topic": "Research Alerts",
     "secondary_topics": "Search alerts, Publication alerts",
@@ -2391,22 +1809,6 @@
     "Category": "Search Tips & Strategies",
     "Tutorial title": "What is a dissertation and how do I use it?",
     "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72776297",
-    "transcript_link": "",
-    "primary_topic": "Dissertation Research",
-    "secondary_topics": "Graduate research, Thesis vs dissertation",
-    "learning_objectives": "Learn what dissertations are and how to appropriately use them in research",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "What is a dissertation? Can I use dissertations as sources?",
-    "search_intent_keywords": "dissertations, theses, graduate research, doctoral studies",
-    "tools_mentioned": "",
-    "when_to_use": "When encountering dissertations in research"
-  },
-  {
-    "Category": "Search Tips & Strategies",
-    "Tutorial title": "What is a dissertation and how do I use it?",
-    "Tutorial type": "Infographic",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=45224899",
     "transcript_link": "",
@@ -2453,75 +1855,11 @@
   },
   {
     "Category": "SOS",
-    "Tutorial title": "How to request materials from the Snell Library remote annex",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=49506431",
-    "transcript_link": "",
-    "primary_topic": "Library Services",
-    "secondary_topics": "Remote storage, Material requests",
-    "learning_objectives": "Learn to request and access library materials stored off-site",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I get books from the annex?",
-    "search_intent_keywords": "annex materials, remote storage, library requests, material pickup",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When needed materials are stored off-site"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "How to request materials from the Snell Library remote annex",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967118",
-    "transcript_link": "",
-    "primary_topic": "Library Services",
-    "secondary_topics": "Remote storage, Material requests",
-    "learning_objectives": "Learn to request and access library materials stored off-site",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I get books from the annex?",
-    "search_intent_keywords": "annex materials, remote storage, library requests, material pickup",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When needed materials are stored off-site"
-  },
-  {
-    "Category": "SOS",
     "Tutorial title": "SOS: Advanced Search",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=005a2d12-4b48-44df-8e05-ab9701376a03",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/Advanced",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Advanced search features, Search refinement",
-    "learning_objectives": "Learn to use advanced search features in Scholar OneSearch for more precise results",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I use advanced search?",
-    "search_intent_keywords": "advanced search, Scholar OneSearch, search refinement, Boolean searching, SOS",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When basic searches in Scholar OneSearch yield unsatisfactory results"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "SOS: Advanced Search",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=38996147",
-    "transcript_link": "",
-    "primary_topic": "Search Optimization",
-    "secondary_topics": "Advanced search features, Search refinement",
-    "learning_objectives": "Learn to use advanced search features in Scholar OneSearch for more precise results",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I use advanced search?",
-    "search_intent_keywords": "advanced search, Scholar OneSearch, search refinement, Boolean searching, SOS",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When basic searches in Scholar OneSearch yield unsatisfactory results"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "SOS: Advanced Search",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967000",
-    "transcript_link": "",
     "primary_topic": "Search Optimization",
     "secondary_topics": "Advanced search features, Search refinement",
     "learning_objectives": "Learn to use advanced search features in Scholar OneSearch for more precise results",
@@ -2549,38 +1887,6 @@
   },
   {
     "Category": "SOS",
-    "Tutorial title": "SOS: Finding full text articles",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=38995849",
-    "transcript_link": "",
-    "primary_topic": "Full Text Access",
-    "secondary_topics": "Article access, Full text linking",
-    "learning_objectives": "Learn multiple methods for accessing full text articles through Scholar OneSearch",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I get full text articles?",
-    "search_intent_keywords": "full text access, article access, Scholar OneSearch, full text PDF",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When students need full text access to articles"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "SOS: Finding full text articles",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69966981",
-    "transcript_link": "",
-    "primary_topic": "Full Text Access",
-    "secondary_topics": "Article access, Full text linking",
-    "learning_objectives": "Learn multiple methods for accessing full text articles through Scholar OneSearch",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "How do I get full text articles?",
-    "search_intent_keywords": "full text access, article access, Scholar OneSearch, full text PDF",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When students need full text access to articles"
-  },
-  {
-    "Category": "SOS",
     "Tutorial title": "SOS: How do I find my course materials?",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
@@ -2597,42 +1903,10 @@
   },
   {
     "Category": "SOS",
-    "Tutorial title": "SOS: How do I find my course materials?",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=73281138",
-    "transcript_link": "",
-    "primary_topic": "Course materials",
-    "secondary_topics": "Course reserves, Textbooks",
-    "learning_objectives": "Learn to locate course materials and textbooks available through the library",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "Where are my textbooks?",
-    "search_intent_keywords": "course materials, textbooks, course reserves, reading list",
-    "tools_mentioned": "Scholar OneSearch, Leganto",
-    "when_to_use": "When students need access to assigned course materials"
-  },
-  {
-    "Category": "SOS",
     "Tutorial title": "SOS: How to set up search alerts",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=59157796",
-    "transcript_link": "",
-    "primary_topic": "Search Automation",
-    "secondary_topics": "Search alerts, Email notifications",
-    "learning_objectives": "Learn to create automated alerts for new content matching research interests",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I get notified of new research?",
-    "search_intent_keywords": "search alerts, research notifications, save searches, automated alerts",
-    "tools_mentioned": "Scholar OneSearch alert system",
-    "when_to_use": "When researchers need ongoing updates on topics"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "SOS: How to set up search alerts",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967021",
     "transcript_link": "",
     "primary_topic": "Search Automation",
     "secondary_topics": "Search alerts, Email notifications",
@@ -2662,57 +1936,9 @@
   {
     "Category": "SOS",
     "Tutorial title": "What is Scholar OneSearch?",
-    "Tutorial type": "Transcript",
-    "Format": "HTML",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=68411114",
-    "transcript_link": "",
-    "primary_topic": "Search and Discovery System",
-    "secondary_topics": "Discovery system, Library catalog",
-    "learning_objectives": "Learn to use Scholar OneSearch as the primary library search and discovery tool",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "What is Scholar OneSearch? How do I use the library search?",
-    "search_intent_keywords": "Scholar OneSearch, library catalog, library search, discovery system, SOS",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When starting library research or needing library resources"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "What is Scholar OneSearch?",
     "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ee86299a-0cc7-4808-bb43-ac61012ef766",
-    "transcript_link": "",
-    "primary_topic": "Search and Discovery System",
-    "secondary_topics": "Discovery system, Library catalog",
-    "learning_objectives": "Learn to use Scholar OneSearch as the primary library search and discovery tool",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "What is Scholar OneSearch?",
-    "search_intent_keywords": "Scholar OneSearch, library catalog, library search, discovery system, SOS",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When starting library research or needing library resources"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "What is Scholar OneSearch?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=58526360",
-    "transcript_link": "",
-    "primary_topic": "Search and Discovery System",
-    "secondary_topics": "Discovery system, Library catalog",
-    "learning_objectives": "Learn to use Scholar OneSearch as the primary library search and discovery tool",
-    "difficulty_level": "Beginner",
-    "student_questions_addressed": "What is Scholar OneSearch?",
-    "search_intent_keywords": "Scholar OneSearch, library catalog, library search, discovery system, SOS",
-    "tools_mentioned": "Scholar OneSearch",
-    "when_to_use": "When starting library research or needing library resources"
-  },
-  {
-    "Category": "SOS",
-    "Tutorial title": "What is Scholar OneSearch?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69966930",
     "transcript_link": "",
     "primary_topic": "Search and Discovery System",
     "secondary_topics": "Discovery system, Library catalog",
@@ -2740,43 +1966,11 @@
     "when_to_use": "When conducting architecture research requiring visual materials"
   },
   {
-    "Category": "Subject-Specific: Art & Architecture",
-    "Tutorial title": "Finding images using the Avery Index to Architectural Periodicals",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=73225896",
-    "transcript_link": "",
-    "primary_topic": "Architecture Research",
-    "secondary_topics": "Image searching, Architectural databases",
-    "learning_objectives": "Learn to locate architectural images and plans using specialized architecture database",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I find architectural images?",
-    "search_intent_keywords": "architectural images, building plans, architecture research, visual resources",
-    "tools_mentioned": "Avery Index",
-    "when_to_use": "When conducting architecture research requiring visual materials"
-  },
-  {
     "Category": "Subject-Specific: Business & Market Research",
     "Tutorial title": "Finding information on private companies",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=58524633",
-    "transcript_link": "",
-    "primary_topic": "Business Research",
-    "secondary_topics": "Private company data, Non-public companies",
-    "learning_objectives": "Learn specialized techniques for researching private companies using targeted databases",
-    "difficulty_level": "Advanced",
-    "student_questions_addressed": "How do I research private companies?",
-    "search_intent_keywords": "private companies, non-public business, private company research, business intelligence",
-    "tools_mentioned": "PrivCo, PitchBook, Mergent Intellect",
-    "when_to_use": "When researching non-publicly traded companies"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Finding information on private companies",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967511",
     "transcript_link": "",
     "primary_topic": "Business Research",
     "secondary_topics": "Private company data, Non-public companies",
@@ -2821,42 +2015,10 @@
   },
   {
     "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Market research: how to find company information",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967586",
-    "transcript_link": "",
-    "primary_topic": "Business Research",
-    "secondary_topics": "Company profiles, Financial information",
-    "learning_objectives": "Learn to research companies using specialized business databases",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I research companies?",
-    "search_intent_keywords": "company research, business information, company profiles, financial data",
-    "tools_mentioned": "MarketLine Advantage, NetAdvantage, PitchBook",
-    "when_to_use": "When conducting business research or competitive analysis"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
     "Tutorial title": "Market research: how to find country background information",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=57059039",
-    "transcript_link": "",
-    "primary_topic": "Country Analysis",
-    "secondary_topics": "Economic data, Political analysis",
-    "learning_objectives": "Learn to research countries' economic and political landscapes using specialized databases",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I research countries?",
-    "search_intent_keywords": "country research, economic data, political analysis, international business",
-    "tools_mentioned": "EIU Viewpoint, EMIS, FitchConnect, Statista",
-    "when_to_use": "When conducting international business research"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Market research: how to find country background information",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967624",
     "transcript_link": "",
     "primary_topic": "Country Analysis",
     "secondary_topics": "Economic data, Political analysis",
@@ -2885,22 +2047,6 @@
   },
   {
     "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Market research: how to find customer demographic information",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967602",
-    "transcript_link": "",
-    "primary_topic": "Business Research",
-    "secondary_topics": "Customer demographics, Market research",
-    "learning_objectives": "Learn to locate demographic and consumer information using market research databases",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I find demographic data?",
-    "search_intent_keywords": "demographics, customer data, market research, consumer information",
-    "tools_mentioned": "Mintel, Passport, SimplyAnalytics, Social Explorer",
-    "when_to_use": "When conducting market research or developing business strategies"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
     "Tutorial title": "Market research: how to find industry information",
     "Tutorial type": "Walkthrough",
     "Format": "PDF",
@@ -2917,42 +2063,10 @@
   },
   {
     "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Market research: how to find industry information",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69967555",
-    "transcript_link": "",
-    "primary_topic": "Business Research",
-    "secondary_topics": "Market research, Industry reports",
-    "learning_objectives": "Learn to locate comprehensive industry information and analysis using business databases",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "How do I research industries?",
-    "search_intent_keywords": "industry research, market analysis, industry reports, competitive intelligence",
-    "tools_mentioned": "FitchConnect, IBISWorld, MarketLine Advantage, Passport, Statista",
-    "when_to_use": "When conducting industry analysis or market research"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
     "Tutorial title": "Public vs. private companies",
     "Tutorial type": "Infographic",
     "Format": "PDF",
     "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=55664426",
-    "transcript_link": "",
-    "primary_topic": "Business Research",
-    "secondary_topics": "Company structures, Public vs private",
-    "learning_objectives": "Learn to distinguish between public and private companies and appropriate research strategies",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "What's the difference between public and private companies?",
-    "search_intent_keywords": "public companies, private companies, business types, company classification",
-    "tools_mentioned": "",
-    "when_to_use": "When beginning company research"
-  },
-  {
-    "Category": "Subject-Specific: Business & Market Research",
-    "Tutorial title": "Public vs. private companies",
-    "Tutorial type": "Infographic",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72882687",
     "transcript_link": "",
     "primary_topic": "Business Research",
     "secondary_topics": "Company structures, Public vs private",
@@ -2986,7 +2100,8 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a98808dd-e272-46fc-b2d4-ab9800cefcc1",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/ArticlesWrittenNurse",
-    "primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
+    "primary_topic": "", "secondary_topics": "", "learning_objectives": "", "difficulty_level": "",
+    "student_questions_addressed": "", "search_intent_keywords": "", "tools_mentioned": "", "when_to_use": ""
   },
   {
     "Category": "Subject-Specific: Health Sciences",
@@ -3019,22 +2134,6 @@
     "search_intent_keywords": "clinical trials, PubMed, RCT, randomized controlled trials, medical research",
     "tools_mentioned": "PubMed, MeSH database",
     "when_to_use": "When conducting evidence-based medical research"
-  },
-  {
-    "Category": "Subject-Specific: Health Sciences",
-    "Tutorial title": "How to use MeSH terms in your PubMed search",
-    "Tutorial type": "Walkthrough",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=69392997",
-    "transcript_link": "",
-    "primary_topic": "Medical Research",
-    "secondary_topics": "MeSH concepts, Search optimization",
-    "learning_objectives": "Understand how to find, interpret and search with MeSH terms effectively",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "What are MeSH terms? Why use MeSH?",
-    "search_intent_keywords": "MeSH terms, medical search, PubMed, subject headings",
-    "tools_mentioned": "PubMed, MeSH Database, National Library of Medicine",
-    "when_to_use": "When precision is needed in medical searches"
   },
   {
     "Category": "Subject-Specific: Health Sciences",
@@ -3075,7 +2174,8 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8a24a672-99d3-4779-a9fa-adf1013775d8",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/archivegrid",
-    "primary_topic": "","secondary_topics": "","learning_objectives": "","difficulty_level": "","student_questions_addressed": "","search_intent_keywords": "","tools_mentioned": "","when_to_use": ""
+    "primary_topic": "", "secondary_topics": "", "learning_objectives": "", "difficulty_level": "",
+    "student_questions_addressed": "", "search_intent_keywords": "", "tools_mentioned": "", "when_to_use": ""
   },
   {
     "Category": "Subject-Specific: History",
@@ -3084,38 +2184,6 @@
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7e2bcc57-8cb5-45ff-8ddd-abec011e303f",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/historicalnewspapers",
-    "primary_topic": "Historical Research",
-    "secondary_topics": "Newspaper databases, External resources",
-    "learning_objectives": "Learn methods for accessing historical newspaper content",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I find old newspapers?",
-    "search_intent_keywords": "historical newspapers, newspaper archives, chronicling america, historical research",
-    "tools_mentioned": "Newspaper databases, Chronicling America",
-    "when_to_use": "When researching historical events or local history"
-  },
-  {
-    "Category": "Subject-Specific: History",
-    "Tutorial title": "How do I find historical newspapers?",
-    "Tutorial type": "Slides",
-    "Format": "PPT",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=72852761",
-    "transcript_link": "",
-    "primary_topic": "Historical Research",
-    "secondary_topics": "Newspaper databases, External resources",
-    "learning_objectives": "Learn methods for accessing historical newspaper content",
-    "difficulty_level": "Beginner to Intermediate",
-    "student_questions_addressed": "How do I find old newspapers?",
-    "search_intent_keywords": "historical newspapers, newspaper archives, chronicling america, historical research",
-    "tools_mentioned": "Newspaper databases, Chronicling America",
-    "when_to_use": "When researching historical events or local history"
-  },
-  {
-    "Category": "Subject-Specific: History",
-    "Tutorial title": "How do I find historical newspapers?",
-    "Tutorial type": "Slides",
-    "Format": "PDF",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=56626546",
-    "transcript_link": "",
     "primary_topic": "Historical Research",
     "secondary_topics": "Newspaper databases, External resources",
     "learning_objectives": "Learn methods for accessing historical newspaper content",
@@ -3223,24 +2291,8 @@
   },
   {
     "Category": "Subject-Specific: STEM",
-    "Tutorial title": "What is inclusive citation?",
-    "Tutorial type": "Walkthrough",
-    "Format": "Word",
-    "Link": "https://subjectguides.lib.neu.edu/ld.php?content_id=70855034",
-    "transcript_link": "",
-    "primary_topic": "Citation Ethics",
-    "secondary_topics": "Inclusive practices, Diverse perspectives",
-    "learning_objectives": "Learn to practice inclusive citation by intentionally citing diverse scholarly voices",
-    "difficulty_level": "Intermediate",
-    "student_questions_addressed": "Why does citation diversity matter?",
-    "search_intent_keywords": "inclusive citation, citation equity, diverse authors, representation",
-    "tools_mentioned": "Citation databases, Research tools",
-    "when_to_use": "When building comprehensive literature reviews"
-  },
-  {
-    "Category": "Subject-Specific: STEM",
     "Tutorial title": "When do we need to cite the original source?",
-    "Tutorial type": "video",
+    "Tutorial type": "Video",
     "Format": "Panopto",
     "Link": "https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2cab2d52-a9ca-4bbd-9709-aeef0121b0a9",
     "transcript_link": "https://subjectguides.lib.neu.edu/transcripts/CiteOriginalSource",
@@ -3317,253 +2369,9 @@
     "tools_mentioned": "Google Patents, Lens.org",
     "when_to_use": "When conducting patent research for technical projects"
   }
-];
-
-  // Minor words that should stay lowercase unless they are the first word
-  const minorWords = new Set([
-    'a','an','the','and','but','or','nor','for','so','yet',
-    'at','by','in','of','on','to','up','as','is','it'
-  ]);
-
-  function toTitleCase(str) {
-    if (!str) return str;
-    return str.replace(/\S+/g, (word, offset) => {
-      const clean = word.toLowerCase();
-      if (offset !== 0 && minorWords.has(clean)) return clean;
-      return clean.charAt(0).toUpperCase() + clean.slice(1);
-    });
-  }
+  ];
 
   window.addEventListener('DOMContentLoaded', processEmbeddedData);
-
-  function processEmbeddedData() {
-    const groups = new Map();
-    tutorialData.forEach(row => {
-      if (!row['Tutorial title'] || !row.Link) return;
-      const key = createGroupingKey(row['Tutorial title']);
-      const fmt = mapFormat(row.Format);
-      const cat = mapCategory(row.Category);
-      const hasTx = !!(row.transcript_link && row.transcript_link.trim());
-      const searchContent = [
-        row['Tutorial title'], row.primary_topic, row.secondary_topics,
-        row.learning_objectives, row.student_questions_addressed,
-        row.search_intent_keywords, row.tools_mentioned, row.when_to_use
-      ].join(' ').toLowerCase();
-
-      const obj = {
-        title: row['Tutorial title'], category: cat, format: fmt,
-        link: row.Link, transcriptLink: row.transcript_link || null,
-        learningObjectives: row.learning_objectives || '',
-        questionsAddressed: row.student_questions_addressed || '',
-        whenToUse: row.when_to_use || '',
-        primaryTopic: row.primary_topic || '',
-        difficulty: row.difficulty_level || '',
-        searchContent,
-        hasTranscript: fmt === 'Video' && hasTx
-      };
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(obj);
-    });
-
-    tutorials = [];
-    const fmtPriority = ['Video','PDF','PowerPoint','Word document','interactive module'];
-    groups.forEach(variants => {
-      if (!variants.length) return;
-      let sel = null;
-      for (const pf of fmtPriority) {
-        const m = variants.find(v => v.format === pf);
-        if (m) { sel = m; break; }
-      }
-      if (!sel) sel = variants[0];
-
-      const desc = sel.learningObjectives
-        || (sel.questionsAddressed ? `Addresses: ${sel.questionsAddressed}` : '')
-        || (sel.whenToUse ? `Use this when: ${sel.whenToUse}` : '')
-        || (sel.primaryTopic ? `Covers: ${sel.primaryTopic}` : '')
-        || 'No description available.';
-
-      const altFmts = variants
-        .filter(v => v.format !== sel.format)
-        .map(v => ({ format: v.format, link: v.link }));
-
-      tutorials.push({
-        id: tutorials.length + 1,
-        title: sel.title, category: sel.category, format: sel.format,
-        link: sel.link, transcriptLink: sel.transcriptLink,
-        description: desc, searchContent: sel.searchContent,
-        alternativeFormats: altFmts,
-        hasAlternatives: altFmts.length > 0,
-        hasTranscript: sel.hasTranscript,
-        difficulty: sel.difficulty
-      });
-    });
-
-    document.getElementById('uploadStatus').innerHTML =
-      `&#10003; ${tutorials.length} unique tutorials loaded.`;
-  }
-
-  function createGroupingKey(t) {
-    return t.toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').trim();
-  }
-  function mapCategory(c) {
-    if (!c) return 'research basics';
-    const l = c.toLowerCase();
-    if (l.includes('cite')) return 'cite sources';
-    if (l.includes('data') || l.includes('statistics')) return 'find sources';
-    if (l.includes('evaluate')) return 'evaluate sources';
-    if (l.includes('ai')) return 'generative AI';
-    if (l.includes('scholarly')||l.includes('peer')||l.includes('search')||l.includes('sos')||l.includes('subject')) return 'find sources';
-    return 'research basics';
-  }
-  function mapFormat(f) {
-    if (!f) return 'interactive module';
-    const l = f.toLowerCase();
-    if (l.includes('panopto')||l.includes('video')) return 'Video';
-    if (l.includes('pdf')) return 'PDF';
-    if (l.includes('powerpoint')||l.includes('ppt')) return 'PowerPoint';
-    if (l.includes('word')) return 'Word document';
-    if (l.includes('h5p')||l.includes('html')) return 'interactive module';
-    return 'interactive module';
-  }
-
-  function processQuery(q) {
-    const words = q.toLowerCase().split(/\s+/).filter(w => w.length > 1);
-    const meaningful = words.filter(w => !stopWords.has(w));
-    return { originalQuery: q, meaningfulWords: meaningful.length ? meaningful : words, processedQuery: meaningful.join(' ') };
-  }
-  function calcRelevance(q, t) {
-    const p = processQuery(q);
-    let score = 0, matches = [];
-    p.meaningfulWords.forEach(w => {
-      if (t.title.toLowerCase().includes(w)) { score += 10; matches.push(`title: "${w}"`); }
-      if (t.searchContent.includes(w)) score += 3;
-      if (t.category.toLowerCase().includes(w)) { score += 5; matches.push(`category: "${w}"`); }
-    });
-    if (t.searchContent.includes(p.processedQuery)) { score += 15; matches.push('exact phrase'); }
-    return { score, matches };
-  }
-
-  const SCORE_CEILING = 40;
-  function scorePct(s) { return Math.min(Math.round((s / SCORE_CEILING) * 100), 100); }
-
-  function searchTutorials() {
-    const query = document.getElementById('searchInput').value.trim();
-    if (!query || !tutorials.length) return;
-
-    const catFilter = document.getElementById('categoryFilter').value;
-    const fmtFilter = document.getElementById('formatFilter').value;
-
-    const results = tutorials
-      .map(t => {
-        if (catFilter !== 'all' && t.category !== catFilter) return null;
-        if (fmtFilter !== 'all' && t.format !== fmtFilter) return null;
-        const rel = calcRelevance(query, t);
-        return { ...t, relevanceScore: rel.score, matches: rel.matches };
-      })
-      .filter(t => t && t.relevanceScore > 0)
-      .sort((a,b) => b.relevanceScore - a.relevanceScore)
-      .slice(0, 5);
-
-    logSearch(query, catFilter, fmtFilter, results.length);
-    displayResults(results, query);
-
-    const ann = document.getElementById('search-announcer');
-    ann.textContent = '';
-    requestAnimationFrame(() => {
-      ann.textContent = results.length
-        ? `${results.length} result${results.length > 1 ? 's' : ''} found for "${query}".`
-        : `No results found for "${query}".`;
-    });
-  }
-
-  function displayResults(results, query) {
-    const div = document.getElementById('results');
-
-    if (!results.length) {
-      div.innerHTML = `<div class="no-results"><h3>No tutorials found</h3><p>Try different keywords or adjust your filters.</p></div>`;
-      return;
-    }
-
-    div.innerHTML = `
-      <div style="margin-bottom:20px;">
-        <h3>Top ${results.length} Result${results.length > 1 ? 's' : ''} for: "${query}"</h3>
-      </div>
-      ${results.map(t => {
-        const a = linkAttrs(t.format);
-        const relAttr = a.rel ? ` rel="${a.rel}"` : '';
-        const newTabNote = a.newTab ? `<span class="sr-only"> (opens in new tab)</span>` : '';
-        const pct = scorePct(t.relevanceScore);
-
-        /* Transcript — with sr-only tutorial title for context */
-        const txHTML = (t.hasTranscript && t.transcriptLink)
-          ? `<div class="transcript-notice">
-               A <a href="${t.transcriptLink}" target="_self">descriptive transcript
-               <span class="sr-only"> for ${t.title}</span></a> for this video is available.
-             </div>`
-          : '';
-
-        /* Alternative formats — each link names its format AND the tutorial */
-        const altHTML = t.hasAlternatives
-          ? `<div class="alternative-formats">
-               <strong>Also available as:</strong>
-               ${t.alternativeFormats.map(af => {
-                   const aa = linkAttrs(af.format);
-                   const aRel = aa.rel ? ` rel="${aa.rel}"` : '';
-                   const aNewTab = aa.newTab ? `<span class="sr-only"> (opens in new tab)</span>` : '';
-                   return `<a href="${af.link}" target="${aa.target}"${aRel} class="format-link">${af.format}<span class="sr-only"> version of ${t.title}</span>${aNewTab}</a>`;
-                 }).join('')}
-             </div>`
-          : '';
-
-        const matchHTML = (t.matches && t.matches.length)
-          ? `<div class="smart-matching"><strong>Matched on:</strong> ${t.matches.join(', ')}</div>`
-          : '';
-
-        return `
-          <article class="tutorial-card" aria-label="${t.title}">
-            <h4 class="tutorial-title">
-              <a href="${t.link}" target="${a.target}"${relAttr}>${t.title}${newTabNote}</a>
-            </h4>
-            <div class="tutorial-meta">
-              <span class="meta-tag meta-category">${t.category}</span>
-              <span class="meta-tag meta-format ${t.hasAlternatives ? 'preferred-format' : ''}">${t.format}</span>
-              ${t.difficulty ? `<span class="meta-tag meta-difficulty">Level: ${t.difficulty}</span>` : ''}
-            </div>
-            <div class="tutorial-description">${t.description}</div>
-            <div class="access-tutorial-block">
-              <p class="access-tutorial-label">Access Tutorial:</p>
-              <a href="${t.link}" target="${a.target}"${relAttr} class="access-button">${t.title}${newTabNote}</a>
-            </div>
-            ${txHTML}
-            ${altHTML}
-            ${matchHTML}
-            <div class="relevance-indicator">
-              <div class="relevance-bar" role="presentation">
-                <div class="relevance-fill" style="width:${pct}%"></div>
-              </div>
-              <div class="relevance-score" aria-label="Relevance ${pct} percent">${pct}%</div>
-            </div>
-          </article>`;
-      }).join('')}`;
-  }
-
-  function useExample(el) {
-    if (!tutorials.length) { alert('Tutorials are still loading, please wait.'); return; }
-    document.getElementById('searchInput').value = el.textContent;
-    searchTutorials();
-  }
-
-  function logSearch(query, cat, fmt, count) {
-    const id = '1FAIpQLSd8wDip8KCcyWioZUxtQFr3OXw2KKMjdMUAAyRpprA0r6_Omg';
-    const fd = new FormData();
-    fd.append('entry.1450901702', query || 'empty');
-    fd.append('entry.1796583750', cat || 'all');
-    fd.append('entry.708025292', fmt || 'all');
-    fd.append('entry.1349260545', count.toString());
-    fd.append('entry.1336855019', new Date().toISOString());
-    fetch(`https://docs.google.com/forms/d/e/${id}/formResponse`,
-      { method:'POST', mode:'no-cors', body:fd }).catch(()=>{});
-  }
 </script>
 </body>
 </html>
